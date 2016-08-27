@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/default_button_size_length"
         android:layout_height="wrap_content"
         android:id="@+id/fb_login_button"
         android:background="@drawable/fblogin"
@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/default_button_size_length"
         android:layout_height="wrap_content"
         android:text="Login with mail"
         android:background="@color/ColorWhite"

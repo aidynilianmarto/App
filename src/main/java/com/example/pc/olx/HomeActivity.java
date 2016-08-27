@@ -12,6 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+
+import com.example.pc.olx.Offer.Offer;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +45,15 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //Offers list
+        ArrayList<String> offers = new ArrayList<>();
+
+
+        //Maybe Cursor for Database??
+        ArrayAdapter<Offer> offerAdapter = new ArrayAdapter(this, R.layout.home_page_offer_layout, offers);
+
 
 
 
