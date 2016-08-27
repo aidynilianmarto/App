@@ -2,4 +2,11 @@
     <string name="app_name">OLX</string>
     <string name="Description">Description</string>
     <string name="phone">Phone</string>
+    <string name="title_activity_home">OLX</string>
+
+    <string name="navigation_drawer_open">OLX</string>
+    <string name="navigation_drawer_close">Select item</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="log_in">Log in</string>
 </resources>
