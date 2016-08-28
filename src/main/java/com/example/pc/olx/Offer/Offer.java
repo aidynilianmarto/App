@@ -1,9 +1,10 @@
 package com.example.pc.olx.Offer;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.pc.olx.Shop.Shop;
 import com.example.pc.olx.User.User;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,8 @@ public class Offer{
         private String description;
         private String location;
         private Category category;
-        private ArrayList<File> pictures = new ArrayList<>();
+        private ArrayList<Drawable> pictures = new ArrayList<>();
+        private Drawable mainPhoto;
 
         public Offer(String name, double price,String description,String location) {
             if(name!=null && !(name.isEmpty())){
@@ -77,7 +79,11 @@ public class Offer{
             this.category = category;
         }
 
-//        public String getDeadLine() {
+        public Drawable getMainPhoto() {
+            return mainPhoto;
+        }
+
+    //        public String getDeadLine() {
 //            return "Deadline: " + deadLine.getDayOfMonth() + "-" + deadLine.getMonthValue()+ "-" + deadLine.getYear();
 //        }
     }
