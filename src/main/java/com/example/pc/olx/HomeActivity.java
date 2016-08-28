@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.example.pc.olx.Offer.Offer;
 
@@ -53,7 +54,7 @@ public class HomeActivity extends AppCompatActivity
 
         //Maybe Cursor for Database??
         ArrayAdapter<Offer> offerAdapter = new ArrayAdapter(this, R.layout.home_page_offer_layout, offers);
-
+        ImageView imageView = (ImageView) findViewById(R.id.offer_image_view);
 
 
 
