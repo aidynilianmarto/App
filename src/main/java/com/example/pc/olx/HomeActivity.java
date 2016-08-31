@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1);
-        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.pc);
+        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin);
 
         ArrayList<Offer> offers = new ArrayList<>();
 
