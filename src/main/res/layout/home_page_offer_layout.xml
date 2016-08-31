@@ -10,10 +10,11 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/DefaultMargin"
+        android:layout_marginRight="@dimen/DefaultMargin"
         android:id="@+id/offer_view_picture"
     />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
@@ -21,26 +22,27 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:id="@+id/name"
             />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
             android:id="@+id/description"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/priceLL"
+            android:layout_below="@+id/description">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:text="@string/price"
                 android:gravity="center_vertical"
                 android:textColor="@android:color/black"
@@ -49,9 +51,9 @@
 
                 />
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
@@ -62,8 +64,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/priceLL">
 
             <TextView
                 android:layout_width="0dp"
@@ -87,6 +90,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
