@@ -25,24 +25,32 @@
             android:layout_height="wrap_content"
             android:id="@+id/name"
             />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
-            android:id="@+id/description"
-            />
+            android:id="@+id/descSV">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                />
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:id="@+id/priceLL"
-            android:layout_below="@+id/description">
+            android:layout_below="@+id/descSV">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:text="@string/price"
                 android:gravity="center_vertical"
                 android:textColor="@android:color/black"
@@ -51,9 +59,9 @@
 
                 />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
