@@ -1,6 +1,5 @@
 package com.example.pc.olx;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,10 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.pc.olx.Offer.Offer;
+import com.example.pc.olx.Offer.OfferAdapter;
 
 import java.util.ArrayList;
 
@@ -48,15 +47,63 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1);
+        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.pc);
 
-        //Offers list
-        ArrayList<String> offers = new ArrayList<>();
+        ArrayList<Offer> offers = new ArrayList<>();
 
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
+        offers.add(offer1);
+        offers.add(offer2);
 
-        //Maybe Cursor for Database??
-        ArrayAdapter<Offer> offerAdapter = new ArrayAdapter(this, R.layout.home_page_offer_layout, offers);
-        ImageView imageView = (ImageView) findViewById(R.id.offer_image_view);
-
+        OfferAdapter adapter = new OfferAdapter(this, offers);
+        ListView lv = (ListView) findViewById(R.id.offer);
+        lv.setAdapter(adapter);
 
 
     }

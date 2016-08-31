@@ -12,4 +12,10 @@
     tools:context="com.example.pc.olx.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
+    <include
+        layout="@layout/offers"
+        android:id="@+id/offer"
+        />
+
+
 </RelativeLayout>
