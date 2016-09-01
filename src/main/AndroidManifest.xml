@@ -20,8 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Shop.SettingsActivity" />
+        <activity android:name=".Shop.ChangePasswordActivity" />
+        <activity android:name=".Shop.ChangeEmailActivity" />
+        <activity android:name="com.example.olx.ChangeAddressActivity"></activity>
     </application>
 
 </manifest>
