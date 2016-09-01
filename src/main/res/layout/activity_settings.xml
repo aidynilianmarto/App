@@ -7,40 +7,67 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#d2d2cf"
     android:orientation="vertical"
     tools:context="com.example.pc.olx.Shop.SettingsActivity">
 
     <Button
         android:id="@+id/changePassword"
+        android:text="Change Password"
+        android:textColor="#000"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Password"
-        android:layout_marginTop="6dp"
-        android:background="#d2d2cf"
-        android:textColor="#000000"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
+
     <Button
         android:id="@+id/changeEmail"
+        android:text="Change Email"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:layout_marginTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Email"
-        android:layout_marginTop="6dp"
-        android:background="#d2d2cf"
-        android:textColor="#000000"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
+
+
     <Button
         android:id="@+id/changeAddress"
+        android:text="Change Address"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:layout_marginTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Address"
-        android:layout_marginTop="6dp"
-        android:background="#d2d2cf"
-        android:textColor="#000000"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
     <Button
         android:id="@+id/deleteAccount"
+        android:text="Delete Account"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:layout_marginTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete Account"
-        android:layout_marginTop="6dp"
-        android:background="#d2d2cf"
-        android:textColor="#000000"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
+
+
 </LinearLayout>

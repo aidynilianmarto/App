@@ -12,7 +12,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     EditText oldPasswordET;
     EditText newPasswordET;
-    Button submitButton;
+    Button submit1Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +20,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_password);
         oldPasswordET = (EditText) findViewById(R.id.oldPasswordET);
         newPasswordET = (EditText) findViewById(R.id.newPasswordET);
-        submitButton = (Button) findViewById(R.id.submitButton);
         String oldPassword = oldPasswordET.getText().toString();
         String newPassword = newPasswordET.getText().toString();
-
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        submit1Button = (Button) findViewById(R.id.submitButton);
     }
 }
