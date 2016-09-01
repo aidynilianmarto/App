@@ -15,6 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordAgain;
     private EditText address;
     private Button btnRegister;
+    private EditText phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
         passwordAgain = (EditText) findViewById(R.id.repeatPassword);
         address = (EditText) findViewById(R.id.address);
         btnRegister = (Button) findViewById(R.id.btn_registerAdd);
+        phone = (EditText) findViewById(R.id.namePhone);
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,10 +74,20 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                UserManager.getInstance(RegisterActivity.this).userRegister(RegisterActivity.this, username.getText().toString(), name.getText().toString(), password.getText().toString(), email.getText().toString(), address.getText().toString());
+                if(!validate(phone.getText().toString())){
+                    phone.setError("Please enter a valid phone number");
+                    phone.requestFocus();
+                    return;
+                }
+
+                UserManager.getInstance(RegisterActivity.this).userRegister(RegisterActivity.this, username.getText().toString(), name.getText().toString(), password.getText().toString(), email.getText().toString(), address.getText().toString(), phone.getText().toString());
                 finish();
             }
 
         });
+    }
+
+    private boolean validate(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone).matches();
     }
 }

@@ -5,24 +5,29 @@ import android.graphics.drawable.Drawable;
 import com.example.pc.olx.Shop.Shop;
 import com.example.pc.olx.User.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by pc on 27.8.2016 г..
  */
-public class Offer{
+public class Offer implements Serializable{
+        public enum State {USED, NEW}
+
+
         private String name;
         private double price;
 //      private LocalDateTime deadLine;
         private User user;
         private String date;
+        private State state;
         private String description;
         private String location;
         private Category category;
         private ArrayList<Integer> pictures = new ArrayList<>();
         private int mainPhoto;
 
-        public Offer(String name, double price,String description,String location, int picture) {
+        public Offer(String name, double price,String description,String location, int picture, State state) {
             if(name!=null && !(name.isEmpty())){
                 this.name = name;
             }
@@ -36,6 +41,7 @@ public class Offer{
             this.location = location;
             Shop.allOffers.add(this);
             this.mainPhoto = picture;
+            this.state = state;
 
         }
 
@@ -83,9 +89,14 @@ public class Offer{
         public void addPhoto(int x){
             pictures.add(x);
         }
-        public ArrayList<Integer> getPictures(){
-            return pictures;
-        }
+
+        public State getState() {
+        return state;
+    }
+
+        public User getUser() {
+        return user;
+    }
 
     //        public String getDeadLine() {
 //            return "Deadline: " + deadLine.getDayOfMonth() + "-" + deadLine.getMonthValue()+ "-" + deadLine.getYear();

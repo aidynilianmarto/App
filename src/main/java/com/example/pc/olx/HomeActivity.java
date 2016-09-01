@@ -14,19 +14,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.pc.olx.Offer.Offer;
 import com.example.pc.olx.Offer.OfferAdapter;
 import com.example.pc.olx.Shop.SettingsActivity;
+import com.example.pc.olx.User.User;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button login;
+    private Button login;
+    private ImageView offerIV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +64,13 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1);
-        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin);
+        User pesho = new User("Petyr Stoyanov", "liliputq99", "shishi44 ", "palavata.palka@abv.bg", "Kaspichansko usoe", "0889456678");
+
+        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1, Offer.State.USED);
+        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin, Offer.State.NEW);
+
+        offer1.setUser(pesho);
+        offer2.setUser(pesho);
 
         ArrayList<Offer> offers = new ArrayList<>();
 
@@ -116,6 +126,16 @@ public class HomeActivity extends AppCompatActivity
         OfferAdapter adapter = new OfferAdapter(this, offers);
         ListView lv = (ListView) findViewById(R.id.offer);
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomeActivity.this, OfferActivity.class);
+                Offer offer = (Offer) parent.getItemAtPosition(position);
+                intent.putExtra("offer", offer);
+                startActivity(intent);
+            }
+        });
 
 
     }

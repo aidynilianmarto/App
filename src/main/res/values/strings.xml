@@ -11,4 +11,7 @@
     <string name="log_in">Log in</string>
     <string name="price">Price</string>
     <string name="location">Location</string>
+    <string name="state">State</string>
+    <string name="call">Call</string>
+    <string name="msg">MSG</string>
 </resources>

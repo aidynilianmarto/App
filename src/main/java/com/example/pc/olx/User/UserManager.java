@@ -41,7 +41,8 @@ public class UserManager {
                         obj.getString("password"),
                         obj.getString("name"),
                         obj.getString("email"),
-                        obj.getString("address"));
+                        obj.getString("address"),
+                        obj.getString("phone"));
                 userInfo.put(user.getUsername(), user);
             }
         } catch (JSONException e) {
@@ -54,8 +55,8 @@ public class UserManager {
         return userInfo.containsKey(username);
     }
 
-    public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr) {
-        User user = new User(username, name,pass1, email,addr);
+    public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr, String phone) {
+        User user = new User(username, name,pass1, email, addr, phone);
         userInfo.put(username, user);
 
 
@@ -72,6 +73,7 @@ public class UserManager {
                 jobj.put("password", u.getPassword());
                 jobj.put("email", u.getEmail());
                 jobj.put("address", u.getAddress());
+                jobj.put("phone", u.getPhone());
                 jsonUsers.put(jobj);
             }
         }

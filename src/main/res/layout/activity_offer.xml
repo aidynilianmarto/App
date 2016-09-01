@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,91 +7,151 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.example.pc.olx.OfferActivity">
-    <!--OfferInformation-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/default_text_size"
+        android:gravity="center_vertical"
+        android:id="@+id/offerTV"/>
+
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/offer_picture"
-    />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/offerIV"/>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Description"
-        android:textSize="@dimen/default_text_size"
-        android:id="@+id/description"
-        android:layout_below="@+id/offer_picture"
-    />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/description"
-        android:id="@+id/description_text"
-    />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textSize="@dimen/default_text_size"
-        android:layout_below="@+id/description_text"
-        android:id="@+id/price"
-    />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/price"
-        android:id="@+id/price_value"
-        android:textSize="@dimen/default_text_size"
-        android:layout_alignRight="@+id/price"
-    />
-    <!--UserInformation-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/price_value"
-        >
+        android:layout_height="0dp"
+        android:layout_weight="2">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/user_name"
-            android:textSize="@dimen/default_text_size"
-
-        />
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/user_name"
-            >
+            android:layout_height="match_parent"
+            android:id="@+id/descriptionTV"
+            />
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/price"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/default_text_size"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/default_text_size"
+            android:gravity="center|right"
+            android:layout_height="match_parent"
+            android:id="@+id/priceTV"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/default_text_size"
+                android:gravity="center_vertical"
+                android:text="@string/state"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
-                android:id="@+id/phone"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:textSize="@dimen/default_text_size"
-                android:clickable="true"
+                android:gravity="center|bottom"
+                android:id="@+id/stateTV"/>
 
-                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/location"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/default_text_size"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/default_text_size"
+                android:gravity="center|bottom"
+                android:id="@+id/locationTV"/>
 
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/msgButton"
+            android:text="MSG"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
+
+        <Button
+            android:id="@+id/callButton"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+        />
+
+    </LinearLayout>
 
 
-
-</RelativeLayout>
+</LinearLayout>
 
