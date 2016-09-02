@@ -169,7 +169,8 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
         }
         return true;
 
@@ -185,7 +186,9 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_add_offer) {
 
         } else if (id == R.id.nav_settings) {
-
+            Intent intent = new Intent(HomeActivity.this, com.example.pc.olx.Shop.SettingsActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         } else if (id == R.id.nav_info) {
 
         }
