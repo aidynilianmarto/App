@@ -52,5 +52,13 @@ public class OfferActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        msgButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OfferActivity.this, AddOfferActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
