@@ -7,9 +7,9 @@
         android:gradientRadius="100"
         android:centerX="50%"
         android:centerY="50%"
-        android:centerColor="#fff"
-        android:startColor="#E8E8E8"
-        android:endColor="#D0DFE2"
+        android:centerColor="@color/centerColor"
+        android:startColor="@color/startColorButton"
+        android:endColor="@color/endColorButton"
         android:type="radial"
         />
 

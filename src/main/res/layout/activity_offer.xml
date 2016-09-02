@@ -54,7 +54,7 @@
             android:layout_weight="4"
             android:textColor="@android:color/black"
             android:textSize="@dimen/default_text_size"
-            android:gravity="center|right"
+            android:gravity="center_vertical"
             android:layout_height="match_parent"
             android:id="@+id/priceTV"/>
 
@@ -67,49 +67,51 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
                 android:gravity="center_vertical"
                 android:text="@string/state"
                 android:layout_weight="1"/>
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/stateTV"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
-                android:gravity="center|bottom"
-                android:id="@+id/stateTV"/>
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:text="@string/location"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/default_text_size"
-                android:gravity="center|bottom"
-                android:id="@+id/locationTV"/>
+                android:id="@+id/locationTV"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -124,30 +126,23 @@
         <Button
             android:id="@+id/msgButton"
             android:text="MSG"
-            android:textColor="#000"
+            android:textColor="@color/ColorBlack"
             android:textSize="30sp"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginRight="8dp"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             />
 
         <Button
             android:id="@+id/callButton"
-            android:textColor="#000"
+            android:textColor="@color/ColorBlack"
             android:textSize="30sp"
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
         />
 
     </LinearLayout>

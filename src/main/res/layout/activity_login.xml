@@ -45,34 +45,26 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            android:text="Log IN"
-            android:textColor="#000"
+            android:text="Log in"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="10dp"
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
             android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:layout_width="0dp" />
+            android:layout_width="0dp"/>
 
 
         <Button
             android:id="@+id/btnRegister"
             android:text="Register"
-            android:textColor="#000"
+            android:textColor="@android:color/black"
             android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:layout_width="0dp"/>
 
     </LinearLayout>

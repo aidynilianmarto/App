@@ -19,6 +19,7 @@ public class OfferActivity extends AppCompatActivity {
     private TextView descriptionTV;
     private TextView stateTV;
     private TextView locationTV;
+    private TextView priceTV;
     private Button msgButton;
     private Button callButton;
 
@@ -34,6 +35,7 @@ public class OfferActivity extends AppCompatActivity {
         locationTV = (TextView) findViewById(R.id.locationTV);
         msgButton = (Button) findViewById(R.id.msgButton);
         callButton = (Button) findViewById(R.id.callButton);
+        priceTV = (TextView) findViewById(R.id.priceTV);
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
@@ -44,6 +46,7 @@ public class OfferActivity extends AppCompatActivity {
         stateTV.setText(offer.getState().toString());
         locationTV.setText(offer.getLocation());
         callButton.setText(offer.getUser().getPhone());
+        priceTV.setText(Double.toString(offer.getPrice()));
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
