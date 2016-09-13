@@ -10,18 +10,17 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.example.pc.olx.Offer.Offer;
-import com.example.pc.olx.Offer.OfferActivity;
-import com.example.pc.olx.Offer.OfferAdapter;
+import com.example.pc.olx.Offer.OffersAdapter;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
@@ -125,19 +124,11 @@ public class HomeActivity extends AppCompatActivity
         offers.add(offer1);
         offers.add(offer2);
 
-        OfferAdapter adapter = new OfferAdapter(this, offers);
-        ListView lv = (ListView) findViewById(R.id.offer);
+        OffersAdapter adapter = new OffersAdapter(this, offers);
+        RecyclerView lv = (RecyclerView) findViewById(R.id.offer);
+        lv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         lv.setAdapter(adapter);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(HomeActivity.this, OfferActivity.class);
-                Offer offer = (Offer) parent.getItemAtPosition(position);
-                intent.putExtra("offer", offer);
-                startActivity(intent);
-            }
-        });
 
 
     }

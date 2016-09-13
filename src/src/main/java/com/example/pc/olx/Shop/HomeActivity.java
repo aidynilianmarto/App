@@ -21,7 +21,6 @@ import android.widget.ListView;
 
 import com.example.pc.olx.Offer.Offer;
 import com.example.pc.olx.Offer.OfferActivity;
-import com.example.pc.olx.Offer.OfferAdapter;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
