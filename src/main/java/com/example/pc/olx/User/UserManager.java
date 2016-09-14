@@ -39,8 +39,8 @@ public class UserManager {
             for(int i = 0; i < arr.length(); i++){
                 JSONObject obj = arr.getJSONObject(i);
                 User user = new User(obj.getString("username"),
-                        obj.getString("password"),
                         obj.getString("name"),
+                        obj.getString("password"),
                         obj.getString("email"),
                         obj.getString("address"),
                         obj.getString("phone"));
@@ -95,7 +95,7 @@ public class UserManager {
             Log.e("F", "user does not exist in map");
             return false;
         }
-        if(!userInfo.get(username).getPassword().equals(password)){
+        if(!(userInfo.get(username).getPassword().equals(password))){
             Log.e("F","user pass is wrong");
             return false;
         }

@@ -58,8 +58,9 @@ public class HomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        FragmentManager fm1 = getSupportFragmentManager();
         OfferFragment offerFragment = new OfferFragment();
-        fm.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
+        fm1.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerview = navigationView.getHeaderView(0);
@@ -114,7 +115,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_offer_for_u) {
 
         } else if (id == R.id.nav_messages) {
-            fm.beginTransaction().replace(R.id.messageList,new MessageFragment(HomeActivity.this, UserManager.getInstance(HomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
+            //fm.beginTransaction().replace(R.id.messageList,new MessageFragment(HomeActivity.this, UserManager.getInstance(HomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
         } else if (id == R.id.nav_add_offer) {
 
         } else if (id == R.id.nav_settings) {

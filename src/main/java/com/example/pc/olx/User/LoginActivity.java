@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean loginCheck = UserManager.getInstance(LoginActivity.this).isLogin(username.getText().toString(), password.getText().toString());
-                if (!loginCheck) {
+
+                if (!UserManager.getInstance(LoginActivity.this).isLogin(username.getText().toString(), password.getText().toString())) {
                     Toast.makeText(LoginActivity.this, "Sorry, user with that username and password doesn't exist!", Toast.LENGTH_SHORT).show();
                     username.requestFocus();
                     return;

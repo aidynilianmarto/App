@@ -22,7 +22,7 @@ import com.example.pc.olx.R;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
     private TextView logUsernameTV;
     private String logedUser;
     private FragmentManager fm;
