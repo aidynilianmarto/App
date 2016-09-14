@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pc.olx.R;
+import com.example.pc.olx.SendMessageActivity;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class OfferActivity extends AppCompatActivity {
     private TextView locationTV;
     private Button msgButton;
     private Button callButton;
+    private final int MESSAGE_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +58,22 @@ public class OfferActivity extends AppCompatActivity {
         msgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfferActivity.this, AddOfferActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(OfferActivity.this, SendMessageActivity.class);
+                intent.putExtra("receiver" , offer.getUser().getName());
+                intent.putExtra("sender" , "");
+                intent.putExtra("title" ,offer.getName());
+                startActivityForResult(intent,MESSAGE_REQUEST_CODE);
             }
         });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MESSAGE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(OfferActivity.this, "Message Send Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

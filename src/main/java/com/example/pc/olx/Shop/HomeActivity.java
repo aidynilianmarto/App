@@ -20,12 +20,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.pc.olx.MessageFragment;
 import com.example.pc.olx.Offer.Offer;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.Offer.OffersAdapter;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
+import com.example.pc.olx.User.UserManager;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,7 @@ public class HomeActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private Button login;
     private ImageView offerIV;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class HomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        OfferFragment offerFragment = new OfferFragment();
+        fm.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerview = navigationView.getHeaderView(0);
@@ -66,11 +71,6 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        FragmentManager fm = getSupportFragmentManager();
-
-        OfferFragment offerFragment = new OfferFragment();
-        fm.beginTransaction().add(R.id.home_content_layout,offerFragment,"offerFrag").commit();
-
 
 
     }
@@ -114,7 +114,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_offer_for_u) {
 
         } else if (id == R.id.nav_messages) {
-
+            fm.beginTransaction().replace(R.id.messageList,new MessageFragment(HomeActivity.this, UserManager.getInstance(HomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
         } else if (id == R.id.nav_add_offer) {
 
         } else if (id == R.id.nav_settings) {

@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by Aydin on 29.8.2016 г..
@@ -57,8 +58,11 @@ public class UserManager {
 
     public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr, String phone) {
         User user = new User(username, name,pass1, email, addr, phone);
+        user.getAllMessages().add(new Message("hello" , "kak si",user));
+        user.getAllMessages().add(new Message("hello1" , "kak si1",user));
+        user.getAllMessages().add(new Message("hello2" , "kak si2",user));
+        user.getAllMessages().add(new Message("hello3" , "kak si3",user));
         userInfo.put(username, user);
-
 
         SharedPreferences prefs = activity.getSharedPreferences("OLX",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -104,5 +108,20 @@ public class UserManager {
         } else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
         }
+    }
+
+    public void sendMessage(String senderName,String receiverName,Message m){
+        if(senderName!=null && !(senderName.isEmpty()) && receiverName!=null && !(receiverName.isEmpty())  ){
+            userInfo.get(senderName).getSendedMessages().add(m);
+            userInfo.get(receiverName).getReceivedMessages().add(m);
+            userInfo.get(senderName).getAllMessages().add(m);
+            userInfo.get(receiverName).getAllMessages().add(m);
+
+            return;
+        }
+    }
+
+    public User getUser(String sender) {
+        return userInfo.get(sender);
     }
 }

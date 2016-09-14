@@ -16,13 +16,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.pc.olx.MessageFragment;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
+        implements NavigationView.OnNavigationItemSelectedListener {
     private TextView logUsernameTV;
+    private String logedUser;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +49,17 @@ public class UserHomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         OfferFragment offerFragment = new OfferFragment();
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.user_content,offerFragment,"userOffer").commit();
+        fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.content_layout,offerFragment,"userOffer").commit();
         Intent intent = getIntent();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);
         View headerview2 = navigationView.getHeaderView(0);
+        logedUser = intent.getStringExtra("logUser");
         logUsernameTV = (TextView) headerview2.findViewById(R.id.username_view);
-        logUsernameTV.setText(intent.getStringExtra("logUser"));
+        logUsernameTV.setText(logedUser);
     }
 
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -92,16 +97,13 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_my_offer) {
 
         } else if (id == R.id.nav_user_messages) {
-
+            fm.beginTransaction().replace(R.id.messageList,new MessageFragment(UserHomeActivity.this,UserManager.getInstance(UserHomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
         } else if (id == R.id.nav_observed) {
 
         } else if (id == R.id.nav_user_add_offer) {
 
         } else if (id == R.id.nav_user_settings) {
-            Intent intent = new Intent(UserHomeActivity.this, com.example.pc.olx.Shop.SettingsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-
+           
         } else if (id == R.id.nav_user_info) {
 
         } else if (id == R.id.nav_log_out) {
