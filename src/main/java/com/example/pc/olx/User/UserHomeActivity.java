@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,11 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
     private TextView logUsernameTV;
 
     @Override
@@ -42,6 +45,9 @@ public class UserHomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        OfferFragment offerFragment = new OfferFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.user_content,offerFragment,"userOffer").commit();
         Intent intent = getIntent();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);
         View headerview2 = navigationView.getHeaderView(0);

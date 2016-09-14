@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.example.pc.olx.Shop.InformationHomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_marginTop="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Information for OLX android program"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:text="Version: Beta v.1"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Created from : Aydun,Iliqn and Marto"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+
+
+
+
+
+
+</LinearLayout>

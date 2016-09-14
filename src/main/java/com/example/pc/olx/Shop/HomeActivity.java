@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.pc.olx.Offer.Offer;
+import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.Offer.OffersAdapter;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
@@ -28,8 +30,8 @@ import com.example.pc.olx.User.User;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
+    private DrawerLayout drawer;
     private Button login;
     private ImageView offerIV;
 
@@ -48,7 +50,7 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -64,70 +66,10 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        FragmentManager fm = getSupportFragmentManager();
 
-        User pesho = new User("Petyr Stoyanov", "liliputq99", "shishi44 ", "palavata.palka@abv.bg", "Kaspichansko usoe", "0889456678");
-
-        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1, Offer.State.USED);
-        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin, Offer.State.NEW);
-
-        offer1.setUser(pesho);
-        offer2.setUser(pesho);
-
-        ArrayList<Offer> offers = new ArrayList<>();
-
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-
-        OffersAdapter adapter = new OffersAdapter(this, offers);
-        RecyclerView lv = (RecyclerView) findViewById(R.id.offer);
-        lv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        lv.setAdapter(adapter);
+        OfferFragment offerFragment = new OfferFragment();
+        fm.beginTransaction().add(R.id.home_content_layout,offerFragment,"offerFrag").commit();
 
 
 
@@ -177,7 +119,12 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_settings) {
 
+
         } else if (id == R.id.nav_info) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.offer, new InformationHomeFragment(),"infoFrag").commit();
+
+
 
         }
         return true;

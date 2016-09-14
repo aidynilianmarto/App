@@ -22,15 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User.UserHomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">></activity>
+        <activity
+            android:name=".User.UserHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            >
+        </activity>
         <activity android:name=".User.LoginActivity" />
         <activity android:name=".User.RegisterActivity" />
         <activity android:name=".Shop.SettingsActivity" />
         <activity android:name=".Shop.ChangePasswordActivity" />
         <activity android:name=".Shop.ChangeEmailActivity" />
         <activity android:name=".User.ChangeAddressActivity" />
-        <activity android:name=".Offer.AddOfferActivity"></activity>
+        <activity android:name=".Offer.AddOfferActivity" />
     </application>
 
 </manifest>
