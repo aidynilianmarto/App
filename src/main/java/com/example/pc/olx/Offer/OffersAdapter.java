@@ -1,11 +1,13 @@
 package com.example.pc.olx.Offer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pc.olx.R;
@@ -33,6 +35,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
         TextView offerPrice;
         TextView offerLocation;
         TextView offerDescrioption;
+        LinearLayout rootLayout;
 
         public OfferViewHolder(View item) {
             super(item);
@@ -42,6 +45,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
             offerPrice = (TextView) item.findViewById(R.id.amountTV);
             offerLocation = (TextView) item.findViewById(R.id.location);
             offerDescrioption = (TextView) item.findViewById(R.id.description);
+            rootLayout = (LinearLayout) item.findViewById(R.id.offer_root_layout);
         }
     }
 
@@ -56,13 +60,22 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
     @Override
     public void onBindViewHolder(OfferViewHolder holder, int position) {
 
-        Offer offer = offers.get(position);
+        final Offer offer = offers.get(position);
 
         holder.offerMainImage.setImageResource(offer.getMainPhoto());
         holder.offerDescrioption.setText(offer.getDescription());
         holder.offerTitle.setText(offer.getName());
         holder.offerLocation.setText(offer.getLocation());
-        holder.offerPrice.setText(Double.toString(offer.getPrice()));
+        holder.offerPrice.setText(offer.getPrice()+"");
+
+        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, OfferActivity.class);
+                intent.putExtra("offer", offer);
+                activity.startActivity(intent);
+            }
+        });
 
     }
 
