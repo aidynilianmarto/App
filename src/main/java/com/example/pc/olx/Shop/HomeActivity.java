@@ -73,11 +73,12 @@ public class HomeActivity extends AppCompatActivity
         View headerview = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
 
-        login= (Button) headerview.findViewById(R.id.button_log_in);
+        login = (Button) headerview.findViewById(R.id.button_log_in);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                intent.putExtra("login", "loginButton");
                 startActivity(intent);
             }
         });
@@ -129,7 +130,8 @@ public class HomeActivity extends AppCompatActivity
             //fm.beginTransaction().replace(R.id.messageList,new MessageFragment(HomeActivity.this, UserManager.getInstance(HomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
         } else if (id == R.id.nav_add_offer) {
 
-            Intent intent = new Intent(HomeActivity.this, AddOfferActivity.class);
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.putExtra("login", "notlogged");
             startActivity(intent);
 
 

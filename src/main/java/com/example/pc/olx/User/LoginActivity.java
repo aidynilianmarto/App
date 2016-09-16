@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.R;
 
@@ -21,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Intent intent = getIntent();
+        final String logged = intent.getStringExtra("login");
 
 
         username = (EditText) findViewById(R.id.editTxtUsernameLog);
@@ -36,9 +40,17 @@ public class LoginActivity extends AppCompatActivity {
                     username.requestFocus();
                     return;
                 }
-                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-                intent.putExtra("logUser",username.getText().toString());
-                startActivity(intent);
+
+                if(logged.equals("notlogged")){
+                    Intent intent = new Intent(LoginActivity.this, AddOfferActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                    intent.putExtra("logUser",username.getText().toString());
+                    startActivity(intent);
+                }
+
             }
         });
 
