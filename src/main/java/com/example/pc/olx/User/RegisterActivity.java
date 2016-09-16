@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                     passwordAgain.requestFocus();
                     return;
                 }
-                if (!UserManager.isValidEmail(email.getText().toString())) {
+                if (!UserManager.getInstance(RegisterActivity.this).isValidEmail(email.getText().toString())) {
                     email.setError("Invalid email");
                     email.requestFocus();
                     return;

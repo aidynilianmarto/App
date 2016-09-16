@@ -8,10 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pc.olx.R;
-import com.example.pc.olx.SendMessageActivity;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -20,10 +18,8 @@ public class OfferActivity extends AppCompatActivity {
     private TextView descriptionTV;
     private TextView stateTV;
     private TextView locationTV;
-    private TextView priceTV;
     private Button msgButton;
     private Button callButton;
-    private final int MESSAGE_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +33,6 @@ public class OfferActivity extends AppCompatActivity {
         locationTV = (TextView) findViewById(R.id.locationTV);
         msgButton = (Button) findViewById(R.id.msgButton);
         callButton = (Button) findViewById(R.id.callButton);
-        priceTV = (TextView) findViewById(R.id.priceTV);
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
@@ -48,7 +43,6 @@ public class OfferActivity extends AppCompatActivity {
         stateTV.setText(offer.getState().toString());
         locationTV.setText(offer.getLocation());
         callButton.setText(offer.getUser().getPhone());
-        priceTV.setText(offer.getPrice()+"");
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,22 +55,9 @@ public class OfferActivity extends AppCompatActivity {
         msgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OfferActivity.this, SendMessageActivity.class);
-                intent.putExtra("receiver" , offer.getUser().getName());
-                intent.putExtra("sender" , "");
-                intent.putExtra("title" ,offer.getName());
-                startActivityForResult(intent,MESSAGE_REQUEST_CODE);
+                Intent intent = new Intent(OfferActivity.this, AddOfferActivity.class);
+                startActivity(intent);
             }
         });
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MESSAGE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(OfferActivity.this, "Message Send Successfully", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }
