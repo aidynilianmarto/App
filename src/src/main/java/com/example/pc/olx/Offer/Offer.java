@@ -2,7 +2,6 @@ package com.example.pc.olx.Offer;
 
 import android.graphics.drawable.Drawable;
 
-import com.example.pc.olx.Shop.Shop;
 import com.example.pc.olx.User.User;
 
 import java.io.Serializable;

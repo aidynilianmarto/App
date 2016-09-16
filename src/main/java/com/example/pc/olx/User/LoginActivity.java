@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.R;
 
@@ -22,6 +23,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Intent intent = getIntent();
+        final String logged = intent.getStringExtra("login");
+
 
         username = (EditText) findViewById(R.id.editTxtUsernameLog);
         password = (EditText) findViewById(R.id.editTxtPasswordLog);
@@ -30,15 +34,25 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean loginCheck = UserManager.getInstance(LoginActivity.this).isLogin(username.getText().toString(), password.getText().toString());
-                if (!loginCheck) {
+
+                if (!UserManager.getInstance(LoginActivity.this).isLogin(username.getText().toString(), password.getText().toString())) {
                     Toast.makeText(LoginActivity.this, "Sorry, user with that username and password doesn't exist!", Toast.LENGTH_SHORT).show();
                     username.requestFocus();
                     return;
                 }
-                Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-                intent.putExtra("logUser",username.getText().toString());
-                startActivity(intent);
+
+                if(logged.equals("notlogged")){
+                    Intent intent = new Intent(LoginActivity.this, AddOfferActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                    intent.putExtra("logUser",username.getText().toString());
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

@@ -14,6 +14,15 @@
     <string name="state">State: </string>
     <string name="call">Call</string>
     <string name="msg">MSG</string>
+    <string name="please_enter_description">Please enter description</string>
+    <string name="please_enter_price">Please enter price</string>
+    <string name="please_enter_location">Please enter location</string>
+
+    <string-array name="State">
+        <item>USED</item>
+        <item>NEW</item>
+    </string-array>
+
     <string-array name="Categories">
         <item>Real estate</item>
         <item>Cars and parts</item>
@@ -113,4 +122,5 @@
         <item>Goods for twins</item>
         <item>Baby and children other</item>
     </string-array>
+
 </resources>

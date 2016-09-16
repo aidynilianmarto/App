@@ -23,11 +23,15 @@
                 android:layout_height="0dp"
                 android:hint="Please enter offer name"
                 android:layout_weight="1"
+                android:id="@+id/offer_title"
                 />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
+                android:minHeight="25dp"
+                android:background="@drawable/add_picture"
+                android:id="@+id/offer_image"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -44,27 +48,53 @@
                     android:layout_weight="1">
                 </Spinner>
                 <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            </Spinner>
+                    android:id="@+id/spinner2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                </Spinner>
 
             </LinearLayout>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/please_enter_description"
+                android:id="@+id/offer_description"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/please_enter_location"
+                android:id="@+id/offer_location"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/please_enter_price"
+                android:inputType="numberDecimal"
+                android:id="@+id/offer_price"/>
+            <Spinner
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </Spinner>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_offer_button"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonshape"
+                android:text="add offer"/>
+
         </LinearLayout>
+
     </ScrollView>
+
+
 
 </LinearLayout>

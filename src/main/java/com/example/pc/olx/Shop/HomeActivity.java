@@ -1,16 +1,22 @@
 package com.example.pc.olx.Shop;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,20 +24,26 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.pc.olx.MessageFragment;
+import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Offer.Offer;
-import com.example.pc.olx.Offer.OfferActivity;
+import com.example.pc.olx.Offer.OfferFragment;
+import com.example.pc.olx.Offer.OffersAdapter;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
+import com.example.pc.olx.User.UserManager;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
+    private DrawerLayout drawer;
     private Button login;
     private ImageView offerIV;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,95 +60,29 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        FragmentManager fm1 = getSupportFragmentManager();
+        OfferFragment offerFragment = new OfferFragment();
+        fm1.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerview = navigationView.getHeaderView(0);
-        login= (Button) headerview.findViewById(R.id.button_log_in);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        login = (Button) headerview.findViewById(R.id.button_log_in);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                intent.putExtra("login", "loginButton");
                 startActivity(intent);
             }
         });
 
-        User pesho = new User("Petyr Stoyanov", "liliputq99", "shishi44 ", "palavata.palka@abv.bg", "Kaspichansko usoe", "0889456678");
-
-        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1, Offer.State.USED);
-        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin, Offer.State.NEW);
-
-        offer1.setUser(pesho);
-        offer2.setUser(pesho);
-
-        ArrayList<Offer> offers = new ArrayList<>();
-
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-        offers.add(offer1);
-        offers.add(offer2);
-
-        OfferAdapter adapter = new OfferAdapter(this, offers);
-        ListView lv = (ListView) findViewById(R.id.offer);
-        lv.setAdapter(adapter);
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(HomeActivity.this, OfferActivity.class);
-                Offer offer = (Offer) parent.getItemAtPosition(position);
-                intent.putExtra("offer", offer);
-                startActivity(intent);
-            }
-        });
 
 
     }
@@ -168,8 +114,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-            startActivity(intent);
+
         }
         return true;
 
@@ -178,17 +123,26 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        Log.e("the fock", "hihi");
         if (id == R.id.nav_offer_for_u) {
 
         } else if (id == R.id.nav_messages) {
-
+            //fm.beginTransaction().replace(R.id.messageList,new MessageFragment(HomeActivity.this, UserManager.getInstance(HomeActivity.this).getUser(logedUser).getAllMessages()),"userOffer").commit();
         } else if (id == R.id.nav_add_offer) {
 
-        } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(HomeActivity.this, com.example.pc.olx.Shop.SettingsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.putExtra("login", "notlogged");
             startActivity(intent);
+
+
+        } else if (id == R.id.nav_settings) {
+
+
         } else if (id == R.id.nav_info) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.offer, new InformationHomeFragment(),"infoFrag").commit();
+
+
 
         }
         return true;

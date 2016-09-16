@@ -1,7 +1,5 @@
 package com.example.pc.olx.Offer;
 
-import android.graphics.drawable.Drawable;
-
 import com.example.pc.olx.Shop.Shop;
 import com.example.pc.olx.User.User;
 
@@ -23,11 +21,11 @@ public class Offer implements Serializable{
         private State state;
         private String description;
         private String location;
-        private Category category;
+        private String category;
         private ArrayList<Integer> pictures = new ArrayList<>();
         private int mainPhoto;
 
-        public Offer(String name, double price,String description,String location, int picture, State state) {
+        public Offer(String name, double price, String description, String location, int picture, State state, String category) {
             if(name!=null && !(name.isEmpty())){
                 this.name = name;
             }
@@ -39,9 +37,10 @@ public class Offer implements Serializable{
             }
 //            this.deadLine = LocalDateTime.now().plusMonths(1);
             this.location = location;
-            Shop.allOffers.add(this);
+            Shop.getInstance().addOffer(this);
             this.mainPhoto = picture;
             this.state = state;
+            this.category = category;
 
         }
 
@@ -69,7 +68,7 @@ public class Offer implements Serializable{
             return location;
         }
 
-        public Category getCategory() {
+        public String getCategory() {
             return category;
         }
 
@@ -78,7 +77,7 @@ public class Offer implements Serializable{
 
         }
 
-        public void setCategory(Category category) {
+        public void setCategory(String category) {
             this.category = category;
         }
 

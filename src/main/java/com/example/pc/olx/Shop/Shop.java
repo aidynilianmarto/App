@@ -5,9 +5,25 @@ import com.example.pc.olx.Offer.Offer;
 import java.util.ArrayList;
 
 /**
- * Created by pc on 27.8.2016 г..
+ * Created by Kali on 17.9.2016 г..
  */
 public class Shop {
 
-    public static ArrayList<Offer> allOffers = new ArrayList<>();
+    private ArrayList<Offer> allOffers;
+    private static Shop ourInstance = new Shop();
+
+    private Shop() {
+        allOffers = new ArrayList<>();
+    }
+
+
+    public static Shop getInstance() {
+        return ourInstance;
+    }
+
+    public void addOffer(Offer o){
+        allOffers.add(o);
+    }
+
+
 }
