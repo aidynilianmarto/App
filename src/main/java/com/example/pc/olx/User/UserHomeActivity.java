@@ -17,8 +17,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.pc.olx.MessageFragment;
+import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
+import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
@@ -54,6 +56,7 @@ public class UserHomeActivity extends AppCompatActivity
         Intent intent = getIntent();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);
         View headerview2 = navigationView.getHeaderView(0);
+        navigationView.setNavigationItemSelectedListener(this);
         logedUser = intent.getStringExtra("logUser");
         logUsernameTV = (TextView) headerview2.findViewById(R.id.username_view);
         logUsernameTV.setText(logedUser);
@@ -101,6 +104,9 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_observed) {
 
         } else if (id == R.id.nav_user_add_offer) {
+            Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_user_settings) {
            
