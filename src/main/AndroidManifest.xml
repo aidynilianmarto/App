@@ -34,6 +34,7 @@
         <activity android:name=".Shop.ChangeEmailActivity" />
         <activity android:name=".User.ChangeAddressActivity" />
         <activity android:name=".Offer.AddOfferActivity" />
+        <activity android:name=".SendMessageActivity" />
     </application>
 
 </manifest>

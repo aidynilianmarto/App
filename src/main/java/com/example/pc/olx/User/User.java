@@ -1,5 +1,7 @@
 package com.example.pc.olx.User;
 
+import com.example.pc.olx.Offer.Offer;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ public class User implements Serializable{
     private String email;
     private String address;
     private String phone;
+    private ArrayList<Offer> offers;
     private ArrayList<Message> receivedMessages;
     private ArrayList<Message> sendedMessages;
     private ArrayList<Message> allMessages;
@@ -27,6 +30,7 @@ public class User implements Serializable{
         receivedMessages = new ArrayList<>();
         sendedMessages = new ArrayList<>();
         allMessages = new ArrayList<>();
+        offers = new ArrayList<>();
     }
 
     public String getPassword() {

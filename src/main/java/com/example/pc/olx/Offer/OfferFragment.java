@@ -93,10 +93,12 @@ public class OfferFragment extends android.support.v4.app.Fragment {
         offers.add(offer2);
         offers.add(offer1);
         offers.add(offer2);
+
         OffersAdapter adapter = new OffersAdapter(getActivity(), offers);
         RecyclerView lv = (RecyclerView)   root.findViewById(R.id.offer);
-        lv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         lv.setAdapter(adapter);
+        lv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+
 
         return root;
     }
