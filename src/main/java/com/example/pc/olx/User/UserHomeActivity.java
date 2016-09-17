@@ -47,7 +47,7 @@ public class UserHomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);
         View headerview2 = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
-        logedUser = intent.getStringExtra("logUser");
+        logedUser = intent.getStringExtra("login");
         logUsernameTV = (TextView) headerview2.findViewById(R.id.username_view);
         logUsernameTV.setText(logedUser);
     }
