@@ -155,7 +155,6 @@ public class AddOfferActivity extends AppCompatActivity {
 
                 Offer offer = new Offer(titleET.getText().toString(), Double.parseDouble(priceET.getText().toString()), descET.getText().toString(), locationET.getText().toString(), pic, state, spinner2.getSelectedItem().toString());
                 offer.setUser(UserManager.getInstance(AddOfferActivity.this).getUser(loggedUser));
-                Toast.makeText(AddOfferActivity.this, "" + offer.getUser().getUsername(), Toast.LENGTH_SHORT).show();
 
                 Shop.getInstance().addOffer(offer);
                 Toast.makeText(AddOfferActivity.this, "The offer has been added", Toast.LENGTH_SHORT).show();

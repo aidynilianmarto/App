@@ -82,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 UserManager.getInstance(RegisterActivity.this).userRegister(RegisterActivity.this, username.getText().toString(), name.getText().toString(), password.getText().toString(), email.getText().toString(), address.getText().toString(), phone.getText().toString());
+
                 finish();
             }
 
