@@ -88,6 +88,7 @@ public class UserHomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_user_add_offer) {
             Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
+            intent.putExtra("login",logedUser);
             startActivity(intent);
 
 
@@ -96,7 +97,9 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_user_info) {
 
         } else if (id == R.id.nav_log_out) {
-
+            Intent intent = new Intent(UserHomeActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_user);

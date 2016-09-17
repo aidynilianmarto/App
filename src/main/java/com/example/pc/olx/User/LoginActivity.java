@@ -36,6 +36,16 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(username.getText().toString().isEmpty()){
+                    username.setError("Please enter your username");
+                    username.requestFocus();
+                    return;
+                }
+                if(password.getText().toString().isEmpty()){
+                    password.setError("Please enter your password");
+                    password.requestFocus();
+                    return;
+                }
 
                 if (!UserManager.getInstance(LoginActivity.this).isLogin(username.getText().toString(), password.getText().toString())) {
                     Toast.makeText(LoginActivity.this, "Sorry, user with that username and password doesn't exist!", Toast.LENGTH_SHORT).show();
@@ -49,21 +59,25 @@ public class LoginActivity extends AppCompatActivity {
                         intent1.putExtra("intent","message");
                         intent1.putExtra("login",username.getText().toString());
                         startActivity(intent1);
+                        finish();
                         return;
                     case "addOffer":
                         Intent intent2 = new Intent(LoginActivity.this,AddOfferActivity.class);
                         intent2.putExtra("login",username.getText().toString());
                         startActivity(intent2);
+                        finish();
                         return;
                     case "settings":
                         Intent intent3 = new Intent(LoginActivity.this,SettingsActivity.class);
                         intent3.putExtra("login",username.getText().toString());
                         startActivity(intent3);
+                        finish();
                         return;
                 }
                 Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
                 intent.putExtra("login",username.getText().toString());
                 startActivity(intent);
+                finish();
 
 
             }
