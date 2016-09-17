@@ -1,8 +1,17 @@
 package com.example.pc.olx.Shop;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.example.pc.olx.Offer.Offer;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.User;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,43 +24,85 @@ import java.util.List;
 public class Shop {
 
     private ArrayList<Offer> offers;
-    private HashMap<String, User> users;
-    private static Shop ourInstance = new Shop();
+    private static Shop ourInstance;
 
-    private Shop() {
+    private Shop(Activity activity) {
 
         this.offers = new ArrayList<>();
 
-//        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1, Offer.State.USED, "Roommates");
-//        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin, Offer.State.NEW, "Roommates");
+        String json = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE).getString("offerInfo", "No added offers");
+        Log.e("offers", json.toString());
 
+        try {
+            JSONArray array = new JSONArray(json);
 
+            for(int i = 0; i<array.length(); i++){
+                JSONObject jobj = array.getJSONObject(i);
+                Offer.State st = null;
+                if(jobj.getString("state").equals("USED")){
+                    st = Offer.State.USED;
+                }
+                else{
+                    st = Offer.State.NEW;
+                }
+                Offer offer = new Offer(jobj.getString("name"),
+                                        Double.parseDouble(jobj.getString("price")),
+                                        jobj.getString("description"),
+                                        jobj.getString("location"),
+                                        Integer.parseInt(jobj.getString("picture")),
+                                        st,
+                                        jobj.getString("category"));
+                offers.add(offer);
+            }
 
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
-    public static Shop getInstance() {
+    public static Shop getInstance(Activity activity) {
+        if(ourInstance == null){
+            ourInstance = new Shop(activity);
+        }
+
         return ourInstance;
     }
 
-    public void addOffer(Offer o){
+    public void addOffer(Activity activity, Offer o){
+
         offers.add(o);
+
+        SharedPreferences prefs = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        JSONArray jarr = new JSONArray(offers);
+
+        for(Offer offer : offers){
+            try {
+                JSONObject jobj = new JSONObject();
+                jobj.put("name", offer.getName());
+                jobj.put("price", offer.getPrice()+"");
+                jobj.put("description", offer.getDescription());
+                jobj.put("location", offer.getLocation());
+                jobj.put("picture", offer.getMainPhoto()+"");
+                jobj.put("state", offer.getState().toString());
+                jobj.put("category", offer.getCategory());
+                jarr.put(jobj);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        String jsonOffers = jarr.toString();
+        editor.putString("offerInfo", jsonOffers);
+        editor.commit();
     }
 
     public ArrayList<Offer> getALlOffers(){
         return offers;
-    }
-
-    private void staticOffers(){
-        User pesho = new User("Petyr Stoyanov", "liliputq99", "shishi44 ", "palavata.palka@abv.bg", "Kaspichansko usoe", "0889456678");
-
-        Offer offer1 = new Offer("Prodavam ostrov  ", 2000000, "V mnogo dobro sastoqnie, chudesen izgled kam oekana, ima tuk tam nqkoi kamak da bade izvaden.", "Chillie", R.drawable.island1, Offer.State.USED, "Roommates");
-        Offer offer2 = new Offer("Prodavam computer", 445, "V mnogo dobro sastoqnie, stava za vsqkakvi igri, HDD:1TB, VC:Vapor-X R, CPU: i7-4790K", "Varna", R.drawable.fblogin, Offer.State.NEW, "Roommates");
-
-        offer1.setUser(pesho);
-        offer2.setUser(pesho);
-
     }
 
 }

@@ -39,7 +39,7 @@ public class OfferFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.offers, container, false);
 
-        ArrayList<Offer> offers = Shop.getInstance().getALlOffers();
+        ArrayList<Offer> offers = Shop.getInstance(getActivity()).getALlOffers();
 
         OffersAdapter adapter = new OffersAdapter(getActivity(), offers);
         RecyclerView lv = (RecyclerView)   root.findViewById(R.id.offer);
