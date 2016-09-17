@@ -14,7 +14,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.pc.olx.R;
+import com.example.pc.olx.Shop.Shop;
 import com.example.pc.olx.User.UserHomeActivity;
+import com.example.pc.olx.User.UserManager;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,7 @@ public class AddOfferActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
+        final String loggedUser = intent.getStringExtra("login");
 
         offerImage = (ImageView) findViewById(R.id.offer_image);
         addOfferButton = (Button) findViewById(R.id.add_offer_button);
@@ -137,11 +140,27 @@ public class AddOfferActivity extends AppCompatActivity {
                     return;
                 }
 
-                Offer.State state = (Offer.State) stateSpinner.getSelectedItem();
+                Offer.State state = null;
+
+                String x = stateSpinner.getSelectedItem().toString();
+                switch(x){
+                    case "USED":
+                        state = Offer.State.USED;
+                        break;
+                    case "NEW":
+                        state = Offer.State.NEW;
+                        break;
+                }
                 int pic = R.drawable.island1;
 
                 Offer offer = new Offer(titleET.getText().toString(), Double.parseDouble(priceET.getText().toString()), descET.getText().toString(), locationET.getText().toString(), pic, state, spinner2.getSelectedItem().toString());
+                offer.setUser(UserManager.getInstance(AddOfferActivity.this).getUser(loggedUser));
+                Toast.makeText(AddOfferActivity.this, "" + offer.getUser().getUsername(), Toast.LENGTH_SHORT).show();
+
+                Shop.getInstance().addOffer(offer);
                 Toast.makeText(AddOfferActivity.this, "The offer has been added", Toast.LENGTH_SHORT).show();
+
+                finish();
 
             }
         });
