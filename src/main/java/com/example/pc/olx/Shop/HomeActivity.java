@@ -120,8 +120,10 @@ public class HomeActivity extends AppCompatActivity
             intent.putExtra("login", "settings");
             startActivity(intent);
         } else if (id == R.id.nav_info) {
-            FragmentManager fm = getSupportFragmentManager();
-            fm.beginTransaction().replace(R.id.offer, new InformationHomeFragment(),"infoFrag").commit();
+            InformationHomeFragment timePicker = new InformationHomeFragment();
+            drawer.closeDrawer(GravityCompat.START);
+            timePicker.show(this.getSupportFragmentManager(), "infoDialog");
+            return true;
         }
         return true;
     }
