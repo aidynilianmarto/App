@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pc.olx.MessageActivity;
 import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.R;
+import com.example.pc.olx.Shop.SettingsActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText username;
@@ -23,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         final String logged = intent.getStringExtra("login");
 
 
@@ -41,17 +43,27 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(logged.equals("notlogged")){
-                    Intent intent = new Intent(LoginActivity.this, AddOfferActivity.class);
-                    startActivity(intent);
-                    finish();
+                switch (logged){
+                    case "message":
+                        Intent intent1 = new Intent(LoginActivity.this,MessageActivity.class);
+                        intent1.putExtra("intent","message");
+                        intent1.putExtra("login",username.getText().toString());
+                        startActivity(intent1);
+                        return;
+                    case "addOffer":
+                        Intent intent2 = new Intent(LoginActivity.this,AddOfferActivity.class);
+                        intent2.putExtra("login",username.getText().toString());
+                        startActivity(intent2);
+                        return;
+                    case "settings":
+                        Intent intent3 = new Intent(LoginActivity.this,SettingsActivity.class);
+                        intent3.putExtra("login",username.getText().toString());
+                        startActivity(intent3);
+                        return;
                 }
-                else{
-                    Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-                    intent.putExtra("logUser",username.getText().toString());
-                    startActivity(intent);
-                    finish();
-                }
+                Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
+                startActivity(intent);
+
 
             }
         });
