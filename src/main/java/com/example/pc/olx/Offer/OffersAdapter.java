@@ -53,6 +53,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
     public OfferViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = activity.getLayoutInflater();
         View item = inflater.inflate(R.layout.home_page_offer_layout, parent, false);
+        item.findViewById(R.id.offer_root_layout).setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         OfferViewHolder vh = new OfferViewHolder(item);
         return vh;
     }

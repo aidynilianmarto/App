@@ -30,7 +30,7 @@ public class Shop {
         Offer offer2 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
         Offer offer3 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer4 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
-        Offer offer5 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
+        Offer offer5 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer6 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
         Offer offer7 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer8 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
