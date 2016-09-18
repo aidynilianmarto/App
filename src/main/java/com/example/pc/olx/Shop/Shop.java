@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.example.pc.olx.Offer.Offer;
 import com.example.pc.olx.R;
+import com.example.pc.olx.User.User;
+import com.example.pc.olx.User.UserManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +32,7 @@ public class Shop {
         Offer offer2 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
         Offer offer3 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer4 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
-        Offer offer5 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
+        Offer offer5 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer6 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
         Offer offer7 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer8 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
@@ -43,6 +45,18 @@ public class Shop {
         offers.add(offer6);
         offers.add(offer7);
         offers.add(offer8);
+
+        UserManager.getInstance(activity).userRegister(activity, "peshko", "Pesho Kasapina", "123456", "adfasdf@fsd.fsd", "Adsfsad", "423423423");
+        offer1.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer2.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer3.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer4.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer5.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer6.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer7.setUser(UserManager.getInstance(activity).getUser("peshko"));
+        offer8.setUser(UserManager.getInstance(activity).getUser("peshko"));
+
+
 //        String json = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE).getString("offerInfo", "No added offers");
 //        Log.e("offers", json.toString());
 //

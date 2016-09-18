@@ -45,7 +45,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
             offerPrice = (TextView) item.findViewById(R.id.amountTV);
             offerLocation = (TextView) item.findViewById(R.id.location);
             offerDescrioption = (TextView) item.findViewById(R.id.description);
-            rootLayout = (LinearLayout) item.findViewById(R.id.offer_root_layout);
         }
     }
 
@@ -69,7 +68,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
         holder.offerLocation.setText(offer.getLocation());
         holder.offerPrice.setText(offer.getPrice()+"");
 
-        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+        holder.offerMainImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, OfferActivity.class);

@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/oldEmailET"
+        android:inputType="textEmailAddress"
         android:hint="Old Email"
         />
 
@@ -27,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/newEmailET"
+        android:inputType="textEmailAddress"
         android:hint="New Email"/>
 
     <Button

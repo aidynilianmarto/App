@@ -1,9 +1,11 @@
 package com.example.pc.olx.User;
 
+import java.io.Serializable;
+
 /**
  * Created by iliqn on 14.9.2016 г..
  */
-public class Message {
+public class Message implements Serializable {
     private String title;
     private String desc;
     private boolean isReaded;
