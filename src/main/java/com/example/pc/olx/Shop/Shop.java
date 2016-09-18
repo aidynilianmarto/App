@@ -46,7 +46,7 @@ public class Shop {
         offers.add(offer7);
         offers.add(offer8);
 
-        UserManager.getInstance(activity).userRegister(activity, "peshko", "Pesho Kasapina", "123456", "adfasdf@fsd.fsd", "Adsfsad", "423423423");
+        UserManager.getInstance(activity).userRegister(activity, "peshko", "Pesho Kasapina", "123456", "adfasdf@fsd.fsd", "Adsfsad", "423423423",null);
         offer1.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer2.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer3.setUser(UserManager.getInstance(activity).getUser("peshko"));

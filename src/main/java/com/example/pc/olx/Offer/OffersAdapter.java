@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pc.olx.R;
+import com.example.pc.olx.User.User;
 
 import java.util.List;
 
@@ -22,10 +23,12 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
 
     private List<Offer> offers;
     private Activity activity;
+    private String user;
 
-    public OffersAdapter(Activity activity, List<Offer> offers){
+    public OffersAdapter(Activity activity, List<Offer> offers,String user){
         this.activity = activity;
         this.offers = offers;
+        this.user = user;
     }
 
     class OfferViewHolder extends RecyclerView.ViewHolder{
@@ -73,6 +76,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
             public void onClick(View v) {
                 Intent intent = new Intent(activity, OfferActivity.class);
                 intent.putExtra("offer", offer);
+                intent.putExtra("user", user);
                 activity.startActivity(intent);
             }
         });

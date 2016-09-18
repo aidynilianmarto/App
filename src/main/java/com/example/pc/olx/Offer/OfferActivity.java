@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.pc.olx.R;
 import com.example.pc.olx.SendMessageActivity;
+import com.example.pc.olx.User.User;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -23,13 +24,13 @@ public class OfferActivity extends AppCompatActivity {
     private TextView priceTV;
     private Button msgButton;
     private Button callButton;
+    private String user;
     private final int MESSAGE_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer);
-
         offerTV = (TextView) findViewById(R.id.offerTV);
         offerIV = (ImageView) findViewById(R.id.offerIV);
         descriptionTV = (TextView) findViewById(R.id.descriptionTV);
@@ -41,7 +42,7 @@ public class OfferActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
-
+        user = intent.getStringExtra("user");
         offerTV.setText(offer.getName());
         offerIV.setImageResource(offer.getMainPhoto());
         descriptionTV.setText(offer.getDescription());
@@ -62,8 +63,8 @@ public class OfferActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OfferActivity.this, SendMessageActivity.class);
-                intent.putExtra("receiver" , offer.getUser().getName());
-                intent.putExtra("sender" , "");
+                intent.putExtra("receiver" , offer.getUser().getUsername());
+                intent.putExtra("sender" , user);
                 intent.putExtra("title" ,offer.getName());
                 startActivityForResult(intent,MESSAGE_REQUEST_CODE);
             }

@@ -13,6 +13,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private TextView addressTV;
     private TextView emailTV;
     private TextView phoneTV;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,25 +23,13 @@ public class UserInfoActivity extends AppCompatActivity {
         addressTV = (TextView) findViewById(R.id.user_address);
         emailTV = (TextView) findViewById(R.id.user_email);
         phoneTV = (TextView) findViewById(R.id.user_phone);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("login");
+        username = getIntent().getStringExtra("login");
         User u = UserManager.getInstance(this).getUser(username);
         usernameTV.setText(u.getUsername());
         nameTV.setText(u.getName());
         addressTV.setText(u.getAddress());
         emailTV.setText(u.getEmail());
         phoneTV.setText(u.getPhone());
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override

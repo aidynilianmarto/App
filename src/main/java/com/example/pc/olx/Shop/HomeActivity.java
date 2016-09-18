@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         FragmentManager fm1 = getSupportFragmentManager();
-        OfferFragment offerFragment = new OfferFragment();
+        OfferFragment offerFragment = new OfferFragment(null);
         fm1.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

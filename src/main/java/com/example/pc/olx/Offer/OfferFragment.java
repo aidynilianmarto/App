@@ -24,10 +24,12 @@ import android.support.v4.app.Fragment;
  */
 public class OfferFragment extends android.support.v4.app.Fragment {
     private Communicator activity;
-
+    private String user;
+    public OfferFragment(String user){
+        this.user = user;
+    }
 
     public interface Communicator{
-
     }
     @Override
     public void onAttach(Context context) {
@@ -42,7 +44,7 @@ public class OfferFragment extends android.support.v4.app.Fragment {
 
         ArrayList<Offer> offers = Shop.getInstance(getActivity()).getALlOffers();
 
-        OffersAdapter adapter = new OffersAdapter(getActivity(), offers);
+        OffersAdapter adapter = new OffersAdapter(getActivity(), offers,user);
         RecyclerView lv = (RecyclerView)   root.findViewById(R.id.offer);
         lv.setAdapter(adapter);
         lv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));

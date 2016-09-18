@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -36,14 +38,22 @@ public class UserManager {
 
         try {
             JSONArray arr = new JSONArray(json);
+
             for(int i = 0; i < arr.length(); i++){
                 JSONObject obj = arr.getJSONObject(i);
+                ArrayList<Message> messages = new ArrayList<Message>();
+                for(int j = 0; j < obj.getJSONArray("messages").length() ; j++){
+                   JSONObject msg = obj.getJSONArray("messages").getJSONObject(j);
+                    Message m = new Message(msg.getString("title"),msg.getString("desc") , (User)msg.get("user"));
+                    messages.add(m);
+                }
                 User user = new User(obj.getString("username"),
                         obj.getString("name"),
                         obj.getString("password"),
                         obj.getString("email"),
                         obj.getString("address"),
-                        obj.getString("phone"));
+                        obj.getString("phone"),
+                        messages );
                 userInfo.put(user.getUsername(), user);
             }
         } catch (JSONException e) {
@@ -56,14 +66,9 @@ public class UserManager {
         return userInfo.containsKey(username);
     }
 
-    public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr, String phone) {
-        User user = new User(username, name,pass1, email, addr, phone);
-        user.getAllMessages().add(new Message("hello" , "kak si",user));
-        user.getAllMessages().add(new Message("hello1" , "kak si1",user));
-        user.getAllMessages().add(new Message("hello2" , "kak si2",user));
-        user.getAllMessages().add(new Message("hello3" , "kak si3",user));
+    public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr, String phone,ArrayList<Message> messages ) {
+        User user = new User(username, name,pass1, email, addr, phone,messages);
         userInfo.put(username, user);
-
         SharedPreferences prefs = activity.getSharedPreferences("OLX",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String key = "userInfo";
@@ -72,12 +77,22 @@ public class UserManager {
         try {
             for (User u : userInfo.values()) {
                 JSONObject jobj = new JSONObject();
+                JSONArray jsonarr = new JSONArray();
+                for(int i = 0;i<u.getAllMessages().size() ; i++){
+                    JSONObject msgobj = new JSONObject();
+                    Message m = u.getAllMessages().get(i);
+                    msgobj.put("title", m.getTitle());
+                    msgobj.put("desc" , m.getDesc());
+                    msgobj.put("user", m.getUser());
+                    jsonarr.put(jobj);
+                }
                 jobj.put("username", u.getUsername());
                 jobj.put("name",u.getName());
                 jobj.put("password", u.getPassword());
                 jobj.put("email", u.getEmail());
                 jobj.put("address", u.getAddress());
                 jobj.put("phone", u.getPhone());
+                jobj.put("messages" , jsonarr );
                 jsonUsers.put(jobj);
             }
         }
@@ -116,7 +131,6 @@ public class UserManager {
             userInfo.get(receiverName).getReceivedMessages().add(m);
             userInfo.get(senderName).getAllMessages().add(m);
             userInfo.get(receiverName).getAllMessages().add(m);
-
             return;
         }
     }
@@ -124,24 +138,24 @@ public class UserManager {
     public void changePassword(Activity activity,String username,String password){
         User u = getUser(username);
         userInfo.remove(username);
-        userRegister(activity,u.getUsername(),u.getName(),password,u.getEmail(),u.getAddress(),u.getPhone());
+        userRegister(activity,u.getUsername(),u.getName(),password,u.getEmail(),u.getAddress(),u.getPhone(),u.getAllMessages());
 
     }
     public void changeEmail(Activity activity,String username,String email){
         User u = getUser(username);
         userInfo.remove(username);
-        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),email,u.getAddress(),u.getPhone());
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),email,u.getAddress(),u.getPhone(),u.getAllMessages());
     }
     public void changeAddress(Activity activity,String username,String address){
         User u = getUser(username);
         userInfo.remove(username);
-        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),address,u.getPhone());
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),address,u.getPhone(),u.getAllMessages());
     }
 
     public void changePhone(Activity activity,String username,String phone){
         User u = getUser(username);
         userInfo.remove(username);
-        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),u.getAddress(),phone);
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),u.getAddress(),phone,u.getAllMessages());
     }
 
     public static boolean validate(String phone) {

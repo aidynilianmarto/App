@@ -20,13 +20,14 @@ public class User implements Serializable{
     private ArrayList<Message> sendedMessages;
     private ArrayList<Message> allMessages;
 
-    public User(String username, String name, String password, String email, String address, String phone) {
+    public User(String username, String name, String password, String email, String address, String phone,ArrayList<Message> messages) {
         this.username = username;
         this.name = name;
         this.password = password;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.allMessages = messages;
         receivedMessages = new ArrayList<>();
         sendedMessages = new ArrayList<>();
         allMessages = new ArrayList<>();

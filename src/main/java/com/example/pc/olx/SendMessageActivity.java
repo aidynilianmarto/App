@@ -1,5 +1,6 @@
 package com.example.pc.olx;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,9 @@ public class SendMessageActivity extends AppCompatActivity {
     private TextView subject;
     private String messageTitleText;
     private String messageDescriptionText;
-    private String subjectText;
+    private String senderText;
+    private String receiverText;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +30,19 @@ public class SendMessageActivity extends AppCompatActivity {
         description = (EditText) findViewById(R.id.messageDescriptionET);
         messageTitle = (TextView) findViewById(R.id.messageTitleTV);
         subject = (TextView) findViewById(R.id.subjectMessageTV);
+        intent = getIntent();
+        senderText = intent.getStringExtra("sender");
+        receiverText = intent.getStringExtra("receiver");
+        messageTitleText = intent.getStringExtra("title");
+        messageTitle.setText(messageTitleText);
+        subject.setText(receiverText);
 
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                messageTitleText = getIntent().getStringExtra("title");
-                messageTitle.setText(messageDescriptionText);
-                subjectText = getIntent().getStringExtra("receiver");
-                subject.setText(subjectText);
                 messageDescriptionText = description.getText().toString();
-                Message m = new Message(messageTitleText,messageDescriptionText,UserManager.getInstance(SendMessageActivity.this).getUser(getIntent().getStringExtra("sender")));
-                UserManager.getInstance(SendMessageActivity.this).sendMessage(subjectText,getIntent().getStringExtra("sender"),m);
+                Message m = new Message(messageTitleText,messageDescriptionText,UserManager.getInstance(SendMessageActivity.this).getUser(senderText));
+                UserManager.getInstance(SendMessageActivity.this).sendMessage(senderText,receiverText,m);
                 setResult(RESULT_OK);
                 finish();
             }

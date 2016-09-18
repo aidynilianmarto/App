@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.pc.olx.MessageActivity;
 import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
@@ -40,15 +41,15 @@ public class UserHomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        Intent intent = getIntent();
+        logedUser = intent.getStringExtra("login");
         fm = getSupportFragmentManager();
-        OfferFragment offerFragment = new OfferFragment();
+        OfferFragment offerFragment = new OfferFragment(logedUser);
         fm.beginTransaction().add(R.id.content_layout, offerFragment, "userOffer").commit();
 
-        Intent intent = getIntent();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);
         View headerview2 = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
-        logedUser = intent.getStringExtra("login");
         logUsernameTV = (TextView) headerview2.findViewById(R.id.username_view);
         logUsernameTV.setText(logedUser);
     }
@@ -82,7 +83,9 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_my_offer) {
 
         } else if (id == R.id.nav_user_messages) {
-
+            Intent intent = new Intent(UserHomeActivity.this, MessageActivity.class);
+            intent.putExtra("login",logedUser);
+            startActivity(intent);
 
         } else if (id == R.id.nav_user_add_offer) {
             Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
@@ -109,5 +112,6 @@ public class UserHomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
 
