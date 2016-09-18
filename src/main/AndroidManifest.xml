@@ -24,16 +24,25 @@
         </activity>
         <activity
             android:name=".User.UserHomeActivity"
+            android:label="Home page"
             android:theme="@style/AppTheme.NoActionBar">
             >
         </activity>
-        <activity android:name=".User.LoginActivity" />
-        <activity android:name=".User.RegisterActivity" />
-        <activity android:name=".Shop.SettingsActivity" />
+        <activity
+            android:name=".User.LoginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".User.RegisterActivity"
+            android:label="Register" />
+        <activity
+            android:name=".Shop.SettingsActivity"
+            android:label="Settings" />
         <activity android:name=".Shop.ChangePasswordActivity" />
         <activity android:name=".Shop.ChangeEmailActivity" />
         <activity android:name=".User.ChangeAddressActivity" />
-        <activity android:name=".Offer.AddOfferActivity" />
+        <activity
+            android:name=".Offer.AddOfferActivity"
+            android:label="Add offer" />
         <activity android:name=".SendMessageActivity" />
         <activity android:name=".MessageActivity"></activity>
     </application>
