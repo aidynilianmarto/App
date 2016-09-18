@@ -77,15 +77,12 @@ public class UserHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_offer_for_u) {
-            // Handle the camera action
-        } else if (id == R.id.nav_user_offer) {
+        if (id == R.id.nav_user_offer) {
 
         } else if (id == R.id.nav_my_offer) {
 
         } else if (id == R.id.nav_user_messages) {
 
-        } else if (id == R.id.nav_observed) {
 
         } else if (id == R.id.nav_user_add_offer) {
             Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
@@ -98,6 +95,9 @@ public class UserHomeActivity extends AppCompatActivity
             intent.putExtra("login",logedUser);
             startActivity(intent);
         } else if (id == R.id.nav_user_info) {
+            Intent intent = new Intent(UserHomeActivity.this,UserInfoActivity.class);
+            intent.putExtra("login",logedUser);
+            startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
             Intent intent = new Intent(UserHomeActivity.this, HomeActivity.class);

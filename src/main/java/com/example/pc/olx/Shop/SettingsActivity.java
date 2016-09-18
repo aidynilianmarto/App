@@ -8,12 +8,13 @@ import android.widget.Button;
 
 import com.example.pc.olx.User.ChangeAddressActivity;
 import com.example.pc.olx.R;
+import com.example.pc.olx.User.ChangePhoneActivity;
 
 public class SettingsActivity extends AppCompatActivity {
     Button changePasswordBtn;
     Button changeEmailBtn;
     Button changeAddressBtn;
-    Button removeAccountBtn;
+    Button changePhoneBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         changeAddressBtn = (Button) findViewById(R.id.changeAddress);
         changeEmailBtn = (Button) findViewById(R.id.changeEmail);
         changePasswordBtn = (Button) findViewById(R.id.changePassword);
-        removeAccountBtn = (Button) findViewById(R.id.deleteAccount);
+        changePhoneBtn = (Button) findViewById(R.id.change_phone);
         Intent intent = getIntent();
         final String username =intent.getStringExtra("login");
         changeAddressBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +55,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        removeAccountBtn.setOnClickListener(new View.OnClickListener() {
+        changePhoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(SettingsActivity.this, ChangePhoneActivity.class);
+                intent.putExtra("login",username);
+                startActivity(intent);
+                finish();
             }
         });
     }

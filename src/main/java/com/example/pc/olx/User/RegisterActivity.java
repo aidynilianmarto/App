@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(!validate(phone.getText().toString())){
+                if(!UserManager.validate(phone.getText().toString())){
                     phone.setError("Please enter a valid phone number");
                     phone.requestFocus();
                     return;
@@ -89,7 +89,5 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validate(String phone) {
-        return android.util.Patterns.PHONE.matcher(phone).matches();
-    }
+
 }

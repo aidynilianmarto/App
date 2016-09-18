@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_offer_for_u"
-            android:icon="@drawable/offer_for_u"
-            android:title="Offers for you" />
-        <item
             android:id="@+id/nav_user_offer"
             android:icon="@drawable/offer"
             android:title="Offers" />
@@ -18,11 +14,6 @@
             android:id="@+id/nav_user_messages"
             android:icon="@drawable/msg"
             android:title="Messages" />
-        <item
-            android:id="@+id/nav_observed"
-            android:icon="@drawable/observed"
-            android:title="Observed" />
-
 
         <item
             android:id="@+id/nav_user_add_offer"
@@ -40,7 +31,7 @@
         <item
             android:id="@+id/nav_user_info"
             android:icon="@drawable/info"
-            android:title="Information for application" />
+            android:title="Account information" />
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/log_out"

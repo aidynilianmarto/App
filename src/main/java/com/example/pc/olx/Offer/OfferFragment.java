@@ -2,6 +2,7 @@ package com.example.pc.olx.Offer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,6 +50,6 @@ public class OfferFragment extends android.support.v4.app.Fragment {
 
         return root;
     }
-
+    
 }
 

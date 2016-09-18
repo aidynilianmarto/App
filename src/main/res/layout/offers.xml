@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:id="@+id/offer"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#f5f5e8"
     android:dividerHeight="@dimen/divider"
     android:layout_margin="@dimen/DefaultMargin">

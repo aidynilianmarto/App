@@ -44,7 +44,9 @@
             android:name=".Offer.AddOfferActivity"
             android:label="Add offer" />
         <activity android:name=".SendMessageActivity" />
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".User.ChangePhoneActivity" />
+        <activity android:name=".User.UserInfoActivity"></activity>
     </application>
 
 </manifest>

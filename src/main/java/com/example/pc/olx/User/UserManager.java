@@ -138,7 +138,15 @@ public class UserManager {
         userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),address,u.getPhone());
     }
 
+    public void changePhone(Activity activity,String username,String phone){
+        User u = getUser(username);
+        userInfo.remove(username);
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),u.getAddress(),phone);
+    }
 
+    public static boolean validate(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone).matches();
+    }
     public User getUser(String sender) {
         return userInfo.get(sender);
     }
