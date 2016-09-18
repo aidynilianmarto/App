@@ -58,12 +58,10 @@ public class UserManager {
 
     public void userRegister(Activity activity, String username,String name, String pass1, String email, String addr, String phone) {
         User user = new User(username, name,pass1, email, addr, phone);
-
         user.getAllMessages().add(new Message("hello" , "kak si",user));
         user.getAllMessages().add(new Message("hello1" , "kak si1",user));
         user.getAllMessages().add(new Message("hello2" , "kak si2",user));
         user.getAllMessages().add(new Message("hello3" , "kak si3",user));
-
         userInfo.put(username, user);
 
         SharedPreferences prefs = activity.getSharedPreferences("OLX",Context.MODE_PRIVATE);
@@ -122,6 +120,24 @@ public class UserManager {
             return;
         }
     }
+
+    public void changePassword(Activity activity,String username,String password){
+        User u = getUser(username);
+        userInfo.remove(username);
+        userRegister(activity,u.getUsername(),u.getName(),password,u.getEmail(),u.getAddress(),u.getPhone());
+
+    }
+    public void changeEmail(Activity activity,String username,String email){
+        User u = getUser(username);
+        userInfo.remove(username);
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),email,u.getAddress(),u.getPhone());
+    }
+    public void changeAddress(Activity activity,String username,String address){
+        User u = getUser(username);
+        userInfo.remove(username);
+        userRegister(activity,u.getUsername(),u.getName(),u.getPassword(),u.getEmail(),address,u.getPhone());
+    }
+
 
     public User getUser(String sender) {
         return userInfo.get(sender);

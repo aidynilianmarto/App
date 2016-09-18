@@ -22,11 +22,13 @@ public class SettingsActivity extends AppCompatActivity {
         changeEmailBtn = (Button) findViewById(R.id.changeEmail);
         changePasswordBtn = (Button) findViewById(R.id.changePassword);
         removeAccountBtn = (Button) findViewById(R.id.deleteAccount);
-
+        Intent intent = getIntent();
+        final String username =intent.getStringExtra("login");
         changeAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, ChangeAddressActivity.class);
+                intent.putExtra("login",username);
                 startActivity(intent);
                 finish();
             }
@@ -36,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, ChangeEmailActivity.class);
+                intent.putExtra("login",username);
                 startActivity(intent);
                 finish();
             }
@@ -45,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, ChangePasswordActivity.class);
+                intent.putExtra("login",username);
                 startActivity(intent);
                 finish();
             }

@@ -94,7 +94,9 @@ public class UserHomeActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_user_settings) {
-           
+            Intent intent = new Intent(UserHomeActivity.this, SettingsActivity.class);
+            intent.putExtra("login",logedUser);
+            startActivity(intent);
         } else if (id == R.id.nav_user_info) {
 
         } else if (id == R.id.nav_log_out) {
