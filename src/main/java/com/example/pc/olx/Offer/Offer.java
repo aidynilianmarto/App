@@ -101,5 +101,11 @@ public class Offer implements Serializable {
 //        }
 
 
+    @Override
+    public String toString() {
+        String str = "";
+        str.concat(this.name + this.price);
+        return str;
+    }
 }
 

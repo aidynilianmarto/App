@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.pc.olx.Offer.AddOfferActivity;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
+import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
