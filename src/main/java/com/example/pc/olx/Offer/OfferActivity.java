@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import com.example.pc.olx.R;
 import com.example.pc.olx.SendMessageActivity;
 import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
+import com.example.pc.olx.User.UserManager;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -43,14 +45,17 @@ public class OfferActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
+        offer.setUser(UserManager.getInstance(OfferActivity.this).getUser(offer.getUser().getUsername()));
+        callButton.setText(offer.getUser().getPhone());
+
         user = intent.getStringExtra("login");
         offerTV.setText(offer.getName());
         offerIV.setImageResource(offer.getMainPhoto());
         descriptionTV.setText(offer.getDescription());
         stateTV.setText(offer.getState().toString());
         locationTV.setText(offer.getLocation());
-        callButton.setText(offer.getUser().getPhone());
-        priceTV.setText(offer.getPrice()+"");
+        priceTV.setText(offer.getPrice() + "");
+
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,19 +68,19 @@ public class OfferActivity extends AppCompatActivity {
         msgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user==null){
+                if (user == null) {
                     Intent intent = new Intent(OfferActivity.this, LoginActivity.class);
                     intent.putExtra("login", "writeMessage");
-                    intent.putExtra("receiver" , offer.getUser().getUsername());
-                    intent.putExtra("title" ,offer.getName());
+                    intent.putExtra("receiver", offer.getUser().getUsername());
+                    intent.putExtra("title", offer.getName());
                     startActivity(intent);
                     return;
                 }
                 Intent intent = new Intent(OfferActivity.this, SendMessageActivity.class);
-                intent.putExtra("receiver" , offer.getUser().getUsername());
-                intent.putExtra("sender" , user);
-                intent.putExtra("title" ,offer.getName());
-                startActivityForResult(intent,MESSAGE_REQUEST_CODE);
+                intent.putExtra("receiver", offer.getUser().getUsername());
+                intent.putExtra("sender", user);
+                intent.putExtra("title", offer.getName());
+                startActivityForResult(intent, MESSAGE_REQUEST_CODE);
             }
         });
 

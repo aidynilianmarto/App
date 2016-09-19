@@ -57,42 +57,42 @@ public class Shop {
         offer8.setUser(UserManager.getInstance(activity).getUser("peshko"));
 
 
-//        String json = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE).getString("offerInfo", "No added offers");
-//        Log.e("offers", json.toString());
-//
-//        try {
-//
-//            JSONArray array = new JSONArray(json);
-//            Log.e("offer", "3");
-//            for(int i = 0; i<array.length(); i++){
-//                JSONObject jobj = array.getJSONObject(i);
-//                Offer.State st = null;
-//
-//                Log.e("offer", "1");
-//                if(jobj.getString("state").equals("USED")){
-//                    st = Offer.State.USED;
-//                }
-//                else{
-//                    st = Offer.State.NEW;
-//                }
-//
-//                Log.e("offer", "2");
-//                Offer offer = new Offer(jobj.getString("name"),
-//                                        Double.parseDouble(jobj.getString("price")),
-//                                        jobj.getString("description"),
-//                                        jobj.getString("location"),
-//                                        Integer.parseInt(jobj.getString("picture")),
-//                                        st,
-//                                        jobj.getString("category"));
-//                Log.e("offer", offer.toString());
-//                offers.add(offer);
-//            }
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Log.e("size1", offers.size()+"");
+        String json = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE).getString("offerInfo", "No added offers");
+        Log.e("offers", json.toString());
+
+        try {
+
+            JSONArray array = new JSONArray(json);
+            Log.e("offer", "3");
+            for(int i = 0; i<array.length(); i++){
+                JSONObject jobj = array.getJSONObject(i);
+                Offer.State st = null;
+
+                Log.e("offer", "1");
+                if(jobj.getString("state").equals("USED")){
+                    st = Offer.State.USED;
+                }
+                else{
+                    st = Offer.State.NEW;
+                }
+
+                Log.e("offer", "2");
+                Offer offer = new Offer(jobj.getString("name"),
+                                        Double.parseDouble(jobj.getString("price")),
+                                        jobj.getString("description"),
+                                        jobj.getString("location"),
+                                        Integer.parseInt(jobj.getString("picture")),
+                                        st,
+                                        jobj.getString("category"));
+                Log.e("offer", offer.toString());
+                offers.add(offer);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Log.e("size1", offers.size()+"");
 
     }
 
@@ -109,37 +109,38 @@ public class Shop {
 
         offers.add(o);
 
-//        SharedPreferences prefs = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = prefs.edit();
-//        Log.e("size2", offers.size()+"");
-//
-//        JSONArray jarr = new JSONArray(offers);
-//
-//        for(Offer offer : offers){
-//            try {
-//                JSONObject jobj = new JSONObject();
-//                jobj.put("name", offer.getName());
-//                jobj.put("price", offer.getPrice()+"");
-//                jobj.put("description", offer.getDescription());
-//                jobj.put("location", offer.getLocation());
-//                jobj.put("picture", offer.getMainPhoto()+"");
-//                jobj.put("state", offer.getState().toString());
-//                jobj.put("category", offer.getCategory());
-//                jarr.put(jobj);
-//
-//                if(jobj == null){
-//                    continue;
-//                }
-//                Log.e("obj", jobj.toString());
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        String jsonOffers = jarr.toString();
-//        editor.putString("offerInfo", jsonOffers);
-//        editor.commit();
+        SharedPreferences prefs = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Log.e("size2", offers.size()+"");
+
+        JSONArray jarr = new JSONArray();
+
+        for(Offer offer : offers){
+            try {
+                JSONObject jobj = new JSONObject();
+                jobj.put("name", offer.getName());
+                jobj.put("price", offer.getPrice()+"");
+                jobj.put("description", offer.getDescription());
+                jobj.put("location", offer.getLocation());
+                jobj.put("picture", offer.getMainPhoto()+"");
+                jobj.put("state", offer.getState().toString());
+                jobj.put("category", offer.getCategory());
+                jarr.put(jobj);
+
+                if(jobj == null){
+                    continue;
+                }
+                Log.e("obj", jobj.toString());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Log.e("jarr", jarr.toString());
+        String jsonOffers = jarr.toString();
+        editor.putString("offerInfo", jsonOffers);
+        editor.commit();
     }
 
     public ArrayList<Offer> getALlOffers(){

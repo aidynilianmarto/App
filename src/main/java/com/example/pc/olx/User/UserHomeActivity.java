@@ -24,7 +24,7 @@ import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.Shop.SettingsActivity;
 
 public class UserHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator{
+        implements NavigationView.OnNavigationItemSelectedListener, OfferFragment.Communicator {
     private TextView logUsernameTV;
     private String logedUser;
     private FragmentManager fm;
@@ -55,7 +55,7 @@ public class UserHomeActivity extends AppCompatActivity
         logUsernameTV.setText(logedUser);
     }
 
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return false;
@@ -79,31 +79,27 @@ public class UserHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_user_offer) {
-
-        } else if (id == R.id.nav_my_offer) {
-
-        } else if (id == R.id.nav_user_messages) {
+        if (id == R.id.nav_user_messages) {
             Intent intent = new Intent(UserHomeActivity.this, MessageActivity.class);
-            intent.putExtra("login",logedUser);
+            intent.putExtra("login", logedUser);
             drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
         } else if (id == R.id.nav_user_add_offer) {
             Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
-            intent.putExtra("login",logedUser);
+            intent.putExtra("login", logedUser);
             drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
 
         } else if (id == R.id.nav_user_settings) {
             Intent intent = new Intent(UserHomeActivity.this, SettingsActivity.class);
-            intent.putExtra("login",logedUser);
+            intent.putExtra("login", logedUser);
             drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_user_info) {
-            Intent intent = new Intent(UserHomeActivity.this,UserInfoActivity.class);
-            intent.putExtra("login",logedUser);
+            Intent intent = new Intent(UserHomeActivity.this, UserInfoActivity.class);
+            intent.putExtra("login", logedUser);
             drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
@@ -120,5 +116,13 @@ public class UserHomeActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
 

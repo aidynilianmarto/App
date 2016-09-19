@@ -2,14 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_offer_for_u"
-            android:icon="@drawable/offer_for_u"
-            android:title="Offers for you" />
-        <item
-            android:id="@+id/nav_offer"
-            android:icon="@drawable/offer"
-            android:title="Offers" />
+
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/msg"
