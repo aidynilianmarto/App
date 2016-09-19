@@ -19,6 +19,30 @@
         android:gravity="center_vertical"
         android:id="@+id/offerTV"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Category"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/default_text_size"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/default_text_size"
+            android:gravity="center_vertical"
+            android:id="@+id/categoryTV"/>
+
+    </LinearLayout>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,6 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/descriptionTV"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/default_text_size"
             />
     </ScrollView>
 

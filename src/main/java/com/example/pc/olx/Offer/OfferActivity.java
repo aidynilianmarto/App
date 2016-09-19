@@ -27,6 +27,7 @@ public class OfferActivity extends AppCompatActivity {
     private TextView priceTV;
     private Button msgButton;
     private Button callButton;
+    private TextView categoryTV;
     private String user;
     private final int MESSAGE_REQUEST_CODE = 100;
 
@@ -34,6 +35,8 @@ public class OfferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer);
+
+        categoryTV = (TextView) findViewById(R.id.categoryTV);
         offerTV = (TextView) findViewById(R.id.offerTV);
         offerIV = (ImageView) findViewById(R.id.offerIV);
         descriptionTV = (TextView) findViewById(R.id.descriptionTV);
@@ -55,6 +58,7 @@ public class OfferActivity extends AppCompatActivity {
         stateTV.setText(offer.getState().toString());
         locationTV.setText(offer.getLocation());
         priceTV.setText(offer.getPrice() + "");
+        categoryTV.setText(offer.getCategory());
 
 
         callButton.setOnClickListener(new View.OnClickListener() {
