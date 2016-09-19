@@ -45,7 +45,7 @@ public class UserHomeActivity extends AppCompatActivity
         Intent intent = getIntent();
         logedUser = intent.getStringExtra("login");
         fm = getSupportFragmentManager();
-        OfferFragment offerFragment = new OfferFragment(logedUser);
+        OfferFragment offerFragment = new OfferFragment();
         fm.beginTransaction().add(R.id.content_layout, offerFragment, "userOffer").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_user);

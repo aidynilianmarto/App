@@ -25,9 +25,7 @@ import android.support.v4.app.Fragment;
 public class OfferFragment extends android.support.v4.app.Fragment {
     private Communicator activity;
     private String user;
-    public OfferFragment(String user){
-        this.user = user;
-    }
+
 
     public interface Communicator{
     }

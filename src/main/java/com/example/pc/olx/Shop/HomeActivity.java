@@ -3,9 +3,7 @@ package com.example.pc.olx.Shop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -42,7 +40,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         FragmentManager fm1 = getSupportFragmentManager();
-        OfferFragment offerFragment = new OfferFragment(null);
+        OfferFragment offerFragment = new OfferFragment();
         fm1.beginTransaction().add(R.id.content_home_layout,offerFragment,"offerFrag").commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -101,10 +99,6 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_add_offer) {
             intent.putExtra("login", "addOffer");
-			drawer.closeDrawer(GravityCompat.START);
-            startActivity(intent);
-        } else if (id == R.id.nav_settings) {
-            intent.putExtra("login", "settings");
 			drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_info) {

@@ -76,7 +76,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OfferViewH
             public void onClick(View v) {
                 Intent intent = new Intent(activity, OfferActivity.class);
                 intent.putExtra("offer", offer);
-                intent.putExtra("user", user);
+                intent.putExtra("login",activity.getIntent().getStringExtra("login"));
                 activity.startActivity(intent);
             }
         });

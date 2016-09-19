@@ -43,7 +43,7 @@ public class OfferActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
-        user = intent.getStringExtra("user");
+        user = intent.getStringExtra("login");
         offerTV.setText(offer.getName());
         offerIV.setImageResource(offer.getMainPhoto());
         descriptionTV.setText(offer.getDescription());
