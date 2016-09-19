@@ -97,12 +97,15 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_messages) {
             intent.putExtra("login", "message");
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_add_offer) {
             intent.putExtra("login", "addOffer");
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_settings) {
             intent.putExtra("login", "settings");
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_info) {
             InformationHomeFragment timePicker = new InformationHomeFragment();

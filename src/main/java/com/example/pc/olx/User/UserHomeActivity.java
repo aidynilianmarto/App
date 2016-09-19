@@ -28,6 +28,7 @@ public class UserHomeActivity extends AppCompatActivity
     private TextView logUsernameTV;
     private String logedUser;
     private FragmentManager fm;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class UserHomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_user);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout_user);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -85,25 +86,30 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_user_messages) {
             Intent intent = new Intent(UserHomeActivity.this, MessageActivity.class);
             intent.putExtra("login",logedUser);
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
         } else if (id == R.id.nav_user_add_offer) {
             Intent intent = new Intent(UserHomeActivity.this, AddOfferActivity.class);
             intent.putExtra("login",logedUser);
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
 
         } else if (id == R.id.nav_user_settings) {
             Intent intent = new Intent(UserHomeActivity.this, SettingsActivity.class);
             intent.putExtra("login",logedUser);
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
         } else if (id == R.id.nav_user_info) {
             Intent intent = new Intent(UserHomeActivity.this,UserInfoActivity.class);
             intent.putExtra("login",logedUser);
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
             Intent intent = new Intent(UserHomeActivity.this, HomeActivity.class);
+            drawer.closeDrawer(GravityCompat.START);
             startActivity(intent);
             finish();
         }
