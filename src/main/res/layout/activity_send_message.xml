@@ -52,7 +52,6 @@
         android:id="@+id/messageDescriptionET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:hint="Message Description"
         android:maxLines="10"
         android:textSize="20sp"/>

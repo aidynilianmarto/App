@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.pc.olx.MessageActivity;
 import com.example.pc.olx.Offer.AddOfferActivity;
+import com.example.pc.olx.SendMessageActivity;
 import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.R;
 import com.example.pc.olx.Shop.SettingsActivity;
@@ -56,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                 switch (logged){
                     case "message":
                         Intent intent1 = new Intent(LoginActivity.this,MessageActivity.class);
-                        intent1.putExtra("intent","message");
                         intent1.putExtra("login",username.getText().toString());
                         startActivity(intent1);
                         finish();
@@ -71,6 +71,16 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent3 = new Intent(LoginActivity.this,SettingsActivity.class);
                         intent3.putExtra("login",username.getText().toString());
                         startActivity(intent3);
+                        finish();
+                        return;
+                    case "writeMessage":
+                        String receiver = intent.getStringExtra("receiver");
+                        String offersTitle = intent.getStringExtra("title");
+                        Intent intent4 = new Intent(LoginActivity.this,SendMessageActivity.class);
+                        intent4.putExtra("sender",username.getText().toString());
+                        intent4.putExtra("receiver" , receiver);
+                        intent4.putExtra("title" ,offersTitle);
+                        startActivity(intent4);
                         finish();
                         return;
                 }

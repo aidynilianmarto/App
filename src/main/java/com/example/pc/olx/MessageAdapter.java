@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pc.olx.User.Message;
 
@@ -68,7 +67,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity,PreviousMessageActivity.class);
+                Intent intent = new Intent(activity,PreviewMessageActivity.class);
                 intent.putExtra("title" , message.getTitle());
                 intent.putExtra("userName", message.getUser().getName());
                 intent.putExtra("desc", message.getDesc());

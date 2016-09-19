@@ -47,7 +47,7 @@
         <activity android:name=".MessageActivity" />
         <activity android:name=".User.ChangePhoneActivity" />
         <activity android:name=".User.UserInfoActivity" />
-        <activity android:name=".PreviousMessageActivity"></activity>
+        <activity android:name=".PreviewMessageActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.pc.olx.R;
 import com.example.pc.olx.SendMessageActivity;
+import com.example.pc.olx.User.LoginActivity;
 import com.example.pc.olx.User.User;
 
 public class OfferActivity extends AppCompatActivity {
@@ -62,6 +63,14 @@ public class OfferActivity extends AppCompatActivity {
         msgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(user==null){
+                    Intent intent = new Intent(OfferActivity.this, LoginActivity.class);
+                    intent.putExtra("login", "writeMessage");
+                    intent.putExtra("receiver" , offer.getUser().getUsername());
+                    intent.putExtra("title" ,offer.getName());
+                    startActivity(intent);
+                    return;
+                }
                 Intent intent = new Intent(OfferActivity.this, SendMessageActivity.class);
                 intent.putExtra("receiver" , offer.getUser().getUsername());
                 intent.putExtra("sender" , user);
