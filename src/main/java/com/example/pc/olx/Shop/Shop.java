@@ -37,6 +37,12 @@ public class Shop {
         Offer offer7 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
         Offer offer8 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
 
+        offer1.addPhoto(R.drawable.randompic2);
+        offer1.addPhoto(R.drawable.randompic3);
+        offer1.addPhoto(R.drawable.randompic4);
+        offer1.addPhoto(R.drawable.randompic5);
+        offer1.addPhoto(R.drawable.randompic1);
+
         offers.add(offer1);
         offers.add(offer2);
         offers.add(offer3);
@@ -107,6 +113,7 @@ public class Shop {
 
     public void addOffer(Activity activity, Offer o){
 
+        o.addPhoto(o.getMainPhoto());
         offers.add(o);
 
 //        SharedPreferences prefs = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE);

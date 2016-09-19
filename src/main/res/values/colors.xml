@@ -8,4 +8,5 @@
     <color name="startColorButton">#55d8f3</color>
     <color name="endColorButton">#0dc8ee</color>
     <color name="centerColor">#99e7f7</color>
+    <color name="background">#f5f5e8</color>
 </resources>

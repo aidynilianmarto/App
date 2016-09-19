@@ -5,6 +5,7 @@ import com.example.pc.olx.User.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pc on 27.8.2016 г..
@@ -23,7 +24,7 @@ public class Offer implements Serializable {
     private String location;
     private String category;
     private ArrayList<Integer> pictures = new ArrayList<>();
-    private int mainPhoto;
+    private Integer mainPhoto;
 
     public Offer(String name, double price, String description, String location, int picture, State state, String category) {
         if (name != null && !(name.isEmpty())) {
@@ -40,6 +41,7 @@ public class Offer implements Serializable {
         this.mainPhoto = picture;
         this.state = state;
         this.category = category;
+        this.addPhoto(picture);
 
     }
 
@@ -106,6 +108,10 @@ public class Offer implements Serializable {
         String str = "";
         str.concat(this.name + this.price);
         return str;
+    }
+
+    public List<Integer> getAllPictures(){
+        return pictures;
     }
 }
 

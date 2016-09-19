@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,7 @@ import com.example.pc.olx.User.UserManager;
 
 public class OfferActivity extends AppCompatActivity {
 
-    private ImageView offerIV;
+    private RecyclerView imageRV;
     private TextView offerTV;
     private TextView descriptionTV;
     private TextView stateTV;
@@ -38,13 +40,13 @@ public class OfferActivity extends AppCompatActivity {
 
         categoryTV = (TextView) findViewById(R.id.categoryTV);
         offerTV = (TextView) findViewById(R.id.offerTV);
-        offerIV = (ImageView) findViewById(R.id.offerIV);
         descriptionTV = (TextView) findViewById(R.id.descriptionTV);
         stateTV = (TextView) findViewById(R.id.stateTV);
         locationTV = (TextView) findViewById(R.id.locationTV);
         msgButton = (Button) findViewById(R.id.msgButton);
         callButton = (Button) findViewById(R.id.callButton);
         priceTV = (TextView) findViewById(R.id.priceTV);
+        imageRV = (RecyclerView) findViewById(R.id.imageRV);
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
@@ -56,12 +58,13 @@ public class OfferActivity extends AppCompatActivity {
 
         user = intent.getStringExtra("login");
         offerTV.setText(offer.getName());
-        offerIV.setImageResource(offer.getMainPhoto());
         descriptionTV.setText(offer.getDescription());
         stateTV.setText(offer.getState().toString());
         locationTV.setText(offer.getLocation());
         priceTV.setText(offer.getPrice() + "");
         categoryTV.setText(offer.getCategory());
+        imageRV.setAdapter(new ImageAdaptor(this, offer.getAllPictures()));
+        imageRV.setLayoutManager(new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false));
 
 
         callButton.setOnClickListener(new View.OnClickListener() {
