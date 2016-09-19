@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="textShortMessage"
-        android:hint="Username"
+        android:hint="@string/username_login"
         android:layout_marginTop="10dp" />
 
     <EditText
@@ -34,7 +34,7 @@
         android:ems="10"
 
         android:inputType="textPassword"
-        android:hint="Password"
+        android:hint="@string/password_login"
         android:paddingTop="16dp" />
 
     <LinearLayout
@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            android:text="Log in"
+            android:text="@string/log_in_olx"
             android:textColor="@android:color/black"
             android:layout_marginRight="10dp"
             android:textSize="30sp"
@@ -58,7 +58,7 @@
 
         <Button
             android:id="@+id/btnRegister"
-            android:text="Register"
+            android:text="@string/register_log"
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:layout_height="wrap_content"

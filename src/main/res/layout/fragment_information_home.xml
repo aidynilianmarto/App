@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Information for OLX android program"
+        android:text="@string/info_olx_app"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-        android:text="Version: Beta v.1"
+        android:text="@string/app_version"
         android:textSize="15sp"
         android:layout_gravity="center"
         android:gravity="center"/>
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:text="Created from : Aydun,Iliqn and Marto"
+        android:text="@string/created_from_aydun_iliqn_and_marto"
         android:textSize="15sp"
         android:layout_gravity="center"
         android:gravity="center"/>

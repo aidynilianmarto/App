@@ -12,7 +12,7 @@
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Account information"
+       android:text="@string/account_information"
        android:gravity="center"
        android:textSize="30sp"
        android:textStyle="bold"/>
@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Username:"
+            android:text="@string/username_info"
             android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name:"
+            android:text="@string/name_info"
             android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView
@@ -66,7 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Address:"
+            android:text="@string/address_info"
             android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView
@@ -86,7 +86,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Email:"
+            android:text="@string/email_info"
             android:textSize="22sp"
 
             android:textStyle="bold"/>
@@ -107,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Phone:"
+            android:text="@string/phone_info"
             android:textSize="22sp"
             android:textStyle="bold"/>
         <TextView

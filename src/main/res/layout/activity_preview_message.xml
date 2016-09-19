@@ -22,7 +22,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="Title:"
+                    android:text="@string/title_msg_prev"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
@@ -41,7 +41,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="User:"
+                    android:text="@string/user_msg_prev"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
@@ -56,7 +56,7 @@
             </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="Description"
+                    android:text="@string/descr_msg_prev"
                     android:textSize="20sp"
                     android:gravity="center"
                     android:layout_height="wrap_content"/>

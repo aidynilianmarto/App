@@ -121,7 +121,8 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-        if (id == R.id.nav_offer_for_u) {
+        if (id == R.id.home) {
+            drawer.closeDrawer(GravityCompat.START);
 
         } else if (id == R.id.nav_messages) {
             intent.putExtra("login", "message");

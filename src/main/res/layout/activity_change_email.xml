@@ -14,14 +14,14 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:text="Change email"
+        android:text="@string/change_email_txt"
         android:gravity="center"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/oldEmailET"
         android:inputType="textEmailAddress"
-        android:hint="Old Email"
+        android:hint="@string/old_email_change"
         />
 
     <EditText
@@ -29,11 +29,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/newEmailET"
         android:inputType="textEmailAddress"
-        android:hint="New Email"/>
+        android:hint="@string/new_email_change"/>
 
     <Button
         android:id="@+id/submitButton"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="#000"
         android:textSize="30sp"
         android:layout_width="match_parent"

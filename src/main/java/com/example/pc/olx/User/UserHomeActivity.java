@@ -78,8 +78,10 @@ public class UserHomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.user_home) {
+            drawer.closeDrawer(GravityCompat.START);
 
-        if (id == R.id.nav_user_messages) {
+        } else if (id == R.id.nav_user_messages) {
             Intent intent = new Intent(UserHomeActivity.this, MessageActivity.class);
             intent.putExtra("login", logedUser);
             drawer.closeDrawer(GravityCompat.START);

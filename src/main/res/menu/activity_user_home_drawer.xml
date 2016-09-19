@@ -4,14 +4,20 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/user_home"
+            android:icon="@drawable/offer_for_u"
+            android:title="@string/user_home" />
+
+
+        <item
             android:id="@+id/nav_user_messages"
             android:icon="@drawable/msg"
-            android:title="Messages" />
+            android:title="@string/messages" />
 
         <item
             android:id="@+id/nav_user_add_offer"
             android:icon="@drawable/plus"
-            android:title="Add offer" />
+            android:title="@string/add_offer" />
     </group>
 
 
@@ -20,15 +26,15 @@
         <item
             android:id="@+id/nav_user_settings"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
+            android:title="@string/settings" />
         <item
             android:id="@+id/nav_user_info"
             android:icon="@drawable/info"
-            android:title="Account information" />
+            android:title="@string/account_information" />
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/log_out"
-            android:title="Log out" />
+            android:title="@string/log_out" />
     </group>
 
 </menu>

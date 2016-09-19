@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Username"
+                android:hint="@string/username_reg"
                 android:inputType="textShortMessage" />
 
             <EditText
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name_reg"
                 android:inputType="textShortMessage" />
 
             <EditText
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password_reg"
                 android:inputType="textPassword" />
 
             <EditText
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Password again"
+                android:hint="@string/password_again_reg"
                 android:inputType="textPassword" />
 
             <EditText
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email_reg"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Address"
+                android:hint="@string/address_reg"
                 android:inputType="textShortMessage" />
 
             <EditText
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:ems="10"
-                android:hint="Phone number"
+                android:hint="@string/phone_number_reg"
                 android:inputType="number|textShortMessage" />
 
             <Button
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonshape"
-                android:text="Register"
+                android:text="@string/register_reg"
                 android:textColor="#000"
                 android:textSize="30sp" />
         </LinearLayout>

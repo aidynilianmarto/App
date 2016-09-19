@@ -19,7 +19,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="Title:"
+                    android:text="@string/msg_title"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
@@ -37,7 +37,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="User:"
+                    android:text="@string/msg_user"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
@@ -55,7 +55,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:text="Type:"
+                    android:text="@string/msg_type"
                     android:textSize="20sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>

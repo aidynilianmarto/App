@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Change address"
+        android:text="@string/change_address_txt"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -22,7 +22,7 @@
         android:id="@+id/newAddressET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="New Address" />
+        android:hint="@string/new_address_change" />
 
     <Button
         android:id="@+id/submitButton"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/buttonshape"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="#000"
         android:textSize="30sp" />
 </LinearLayout>

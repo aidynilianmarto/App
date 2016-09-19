@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/changePassword"
-        android:text="Change Password"
+        android:text="@string/change_password"
         android:textColor="#000"
         android:textSize="25sp"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/changeEmail"
-        android:text="Change Email"
+        android:text="@string/change_email"
         android:textColor="#000"
         android:textSize="25sp"
         android:layout_marginTop="6dp"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/changeAddress"
-        android:text="Change Address"
+        android:text="@string/change_address"
         android:textColor="#000"
         android:textSize="25sp"
         android:layout_marginTop="6dp"
@@ -43,7 +43,7 @@
         android:background="@drawable/buttonshape"/>
     <Button
         android:id="@+id/change_phone"
-        android:text="Change phone"
+        android:text="@string/change_phone"
         android:textColor="#000"
         android:textSize="25sp"
         android:layout_marginTop="6dp"

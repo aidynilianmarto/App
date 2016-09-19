@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/offer_for_u"
+            android:title="@string/home" />
 
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/msg"
-            android:title="Messages" />
+            android:title="@string/home_messages" />
         <item
             android:id="@+id/nav_add_offer"
             android:icon="@drawable/plus"
-            android:title="Add offer" />
+            android:title="@string/add_offer_home" />
     </group>
 
     <group android:checkableBehavior="single">
@@ -18,7 +22,7 @@
             <item
                 android:id="@+id/nav_info"
                 android:icon="@drawable/info"
-                android:title="Information for application" />
+                android:title="@string/information_for_application" />
 
     </group>
 

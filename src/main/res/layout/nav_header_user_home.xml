@@ -31,7 +31,7 @@
             android:layout_weight="1.6"
             android:paddingTop="5dp"
             android:gravity="right"
-            android:text="Your profile is: "
+            android:text="@string/your_profile_is"
             android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
