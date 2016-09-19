@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,11 @@ import android.widget.ImageView;
 import com.example.pc.olx.Offer.OfferFragment;
 import com.example.pc.olx.R;
 import com.example.pc.olx.User.LoginActivity;
+import com.example.pc.olx.User.UserHomeActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,OfferFragment.Communicator {
@@ -26,11 +32,35 @@ public class HomeActivity extends AppCompatActivity
     private Button login;
     private ImageView offerIV;
     private FragmentManager fm;
+    private static int LOGOUT_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        String loggedout = "";
+        loggedout = getIntent().getStringExtra("loggedout");
+
+
+        if(loggedout==null){
+            String json = this.getSharedPreferences("OLX",MODE_PRIVATE).getString("loggedUser", "No logged user");
+            if(!json.equals("No logged user")) {
+                try {
+                    JSONArray logU = new JSONArray(json);
+                    JSONObject j1 = logU.getJSONObject(0);
+
+                    Intent intent = new Intent(this, UserHomeActivity.class);
+                    intent.putExtra("login", j1.getString("username"));
+                    startActivityForResult(intent, 2);
+                    finish();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

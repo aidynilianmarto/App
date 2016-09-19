@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:ems="10"
                 android:hint="Phone number"
-                android:inputType="textShortMessage" />
+                android:inputType="number|textShortMessage" />
 
             <Button
                 android:id="@+id/btn_registerAdd"

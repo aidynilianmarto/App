@@ -110,6 +110,7 @@ public class UserHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_log_out) {
             Intent intent = new Intent(UserHomeActivity.this, HomeActivity.class);
             drawer.closeDrawer(GravityCompat.START);
+            intent.putExtra("loggedout", "logged out");
             startActivity(intent);
             finish();
         }
