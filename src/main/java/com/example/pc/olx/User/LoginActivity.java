@@ -1,8 +1,10 @@
 package com.example.pc.olx.User;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,25 +17,61 @@ import com.example.pc.olx.Shop.HomeActivity;
 import com.example.pc.olx.R;
 import com.example.pc.olx.Shop.SettingsActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button login;
     private Button register;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final Intent intent = getIntent();
-        final String logged = intent.getStringExtra("login");
-
-
         username = (EditText) findViewById(R.id.editTxtUsernameLog);
         password = (EditText) findViewById(R.id.editTxtPasswordLog);
         login = (Button) findViewById(R.id.buttonLogin);
         register = (Button) findViewById(R.id.btnRegister);
+
+        String user = null;
+        String pass = null;
+
+        String json = this.getSharedPreferences("OLX",MODE_PRIVATE).getString("loggedUser", "No logged user");
+        Log.e("peshko", json);
+        if(!json.equals("No logged user")) {
+            try {
+                JSONArray logU = new JSONArray(json);
+                JSONObject j1 = logU.getJSONObject(0);
+                Log.e("peshko", j1.toString());
+
+                user = j1.getString("username");
+                Log.e("peshko", user);
+                pass = j1.getString("password");
+                Log.e("peshko", pass);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            username.setText(user);
+            password.setText(pass);
+        }
+
+
+        prefs = this.getSharedPreferences("OLX",MODE_PRIVATE);
+        editor = prefs.edit();
+
+        final Intent intent = getIntent();
+        final String logged = intent.getStringExtra("login");
+
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +124,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(LoginActivity.this,UserHomeActivity.class);
                 intent.putExtra("login",username.getText().toString());
+                JSONArray jar = new JSONArray();
+                JSONObject user = new JSONObject();
+                try {
+                    user.put("username", username.getText().toString());
+                    user.put("password", password.getText().toString());
+                    jar.put(user);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                editor.putString("loggedUser", jar.toString());
+
+                editor.commit();
                 startActivity(intent);
                 finish();
 
