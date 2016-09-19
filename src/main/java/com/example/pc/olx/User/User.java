@@ -85,5 +85,9 @@ public class User implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public void addOffer(Offer o){
+        offers.add(o);
+    }
 }
 

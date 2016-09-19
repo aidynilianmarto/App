@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:textColor="@android:color/black"
         android:textSize="@dimen/default_text_size"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:id="@+id/offerTV"/>
 
     <LinearLayout
@@ -58,6 +58,7 @@
             android:layout_height="match_parent"
             android:id="@+id/descriptionTV"
             android:textColor="@android:color/black"
+            android:gravity="center"
             android:textSize="@dimen/default_text_size"
             />
     </ScrollView>

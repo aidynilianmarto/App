@@ -48,8 +48,11 @@ public class OfferActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Offer offer = (Offer) intent.getSerializableExtra("offer");
-        offer.setUser(UserManager.getInstance(OfferActivity.this).getUser(offer.getUser().getUsername()));
-        callButton.setText(offer.getUser().getPhone());
+
+        if(offer.getUser()!=null){
+            offer.setUser(UserManager.getInstance(OfferActivity.this).getUser(offer.getUser().getUsername()));
+            callButton.setText(offer.getUser().getPhone());
+        }
 
         user = intent.getStringExtra("login");
         offerTV.setText(offer.getName());

@@ -1,9 +1,14 @@
 package com.example.pc.olx.Offer;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +36,8 @@ public class AddOfferActivity extends AppCompatActivity {
     private EditText locationET;
     private Button addOfferButton;
     private ImageView offerImage;
+    private int image;
+    private static int LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +67,11 @@ public class AddOfferActivity extends AppCompatActivity {
         spinner1.setAdapter(adapter);
 
 
-
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int x = position;
-                switch(x){
+                switch (x) {
                     case 0:
                         ArrayAdapter<CharSequence> ada = ArrayAdapter.createFromResource(AddOfferActivity.this, R.array.Real_estate, android.R.layout.simple_spinner_item);
                         ada.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,25 +122,40 @@ public class AddOfferActivity extends AppCompatActivity {
             }
         });
 
+        offerImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(AddOfferActivity.this, "Suppose to open gallery or camera here", Toast.LENGTH_SHORT).show();
+
+//                Intent i = new Intent(
+//                        Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//
+//                startActivityForResult(i, LOAD_IMAGE);
+
+            }
+        });
+
         addOfferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(titleET.getText().toString()==null||titleET.getText().toString().isEmpty()){
+                if (titleET.getText().toString() == null || titleET.getText().toString().isEmpty()) {
                     titleET.setError("This field is mandatory");
                     titleET.requestFocus();
                     return;
                 }
-                if(descET.getText().toString()==null||descET.getText().toString().isEmpty()){
+                if (descET.getText().toString() == null || descET.getText().toString().isEmpty()) {
                     descET.setError("This field is mandatory");
                     descET.requestFocus();
                     return;
                 }
-                if(priceET.getText().toString()==null||priceET.getText().toString().isEmpty()){
+                if (priceET.getText().toString() == null || priceET.getText().toString().isEmpty()) {
                     priceET.setError("This field is mandatory");
                     priceET.requestFocus();
                     return;
                 }
-                if(locationET.getText().toString()==null||locationET.getText().toString().isEmpty()){
+                if (locationET.getText().toString() == null || locationET.getText().toString().isEmpty()) {
                     locationET.setError("This field is mandatory");
                     locationET.requestFocus();
                     return;
@@ -143,7 +164,7 @@ public class AddOfferActivity extends AppCompatActivity {
                 Offer.State state = null;
 
                 String x = stateSpinner.getSelectedItem().toString();
-                switch(x){
+                switch (x) {
                     case "USED":
                         state = Offer.State.USED;
                         break;
@@ -151,10 +172,13 @@ public class AddOfferActivity extends AppCompatActivity {
                         state = Offer.State.NEW;
                         break;
                 }
-                int pic = R.drawable.island1;
 
-                Offer offer = new Offer(titleET.getText().toString(), Double.parseDouble(priceET.getText().toString()), descET.getText().toString(), locationET.getText().toString(), pic, state, spinner2.getSelectedItem().toString());
+
+                image = R.drawable.island1;
+
+                Offer offer = new Offer(titleET.getText().toString(), Double.parseDouble(priceET.getText().toString()), descET.getText().toString(), locationET.getText().toString(), image, state, spinner2.getSelectedItem().toString());
                 offer.setUser(UserManager.getInstance(AddOfferActivity.this).getUser(loggedUser));
+                UserManager.getInstance(AddOfferActivity.this).getUser(loggedUser).addOffer(offer);
 
                 Shop.getInstance(AddOfferActivity.this).addOffer(AddOfferActivity.this, offer);
                 Toast.makeText(AddOfferActivity.this, "The offer has been added", Toast.LENGTH_SHORT).show();
@@ -163,6 +187,7 @@ public class AddOfferActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override
@@ -171,4 +196,29 @@ public class AddOfferActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+//            Uri selectedImage = data.getData();
+//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+//
+//
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            String picturePath = cursor.getString(columnIndex);
+//            cursor.close();
+//
+//            offerImage.setBackgroundColor(getResources().getColor(android.R.color.white));
+//            offerImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+//
+//        }
+//
+//
+//    }
 }
