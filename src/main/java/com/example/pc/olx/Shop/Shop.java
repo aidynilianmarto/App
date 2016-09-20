@@ -28,20 +28,30 @@ public class Shop {
 
         this.offers = new ArrayList<>();
 
-        Offer offer1 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
-        Offer offer2 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
-        Offer offer3 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
-        Offer offer4 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
-        Offer offer5 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejkiNa mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
-        Offer offer6 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
-        Offer offer7 = new Offer("Ostrov", 231312.22, "Na mnogo izgodna cena, nqma zabelejki", "Kaspichan", R.drawable.island1, Offer.State.USED, "Overseas properties");
-        Offer offer8 = new Offer("Komputer", 2321, "Za vsqkakvi geimki", "Varna", R.drawable.pc, Offer.State.NEW, "Computers");
+        Offer offer1 = new Offer("iPhone 6", 222.65, "В много добро състояние, телефона е ползван само 4-5 месеца.", "Каспичан", R.drawable.ip1, Offer.State.USED, "Phones");
+        Offer offer2 = new Offer("Smart TV", 1239, "Телевизора не е пускан, стои си още в кашона. Цената е крайна.", "Каспичан", R.drawable.stv1, Offer.State.NEW, "Computers");
+        Offer offer3 = new Offer("Обувки", 70, "Маратонките са чисто нови, червен цвят, номер 39. Цената може да се коментира", "Каспичан", R.drawable.sh1, Offer.State.NEW, "Shoes");
+        Offer offer4 = new Offer("Бебешки дрешки", 1, "Всякакъв размер бебешки дрешки, за момиченца и момченца. Чисто нови, за повече инфо пишете съобщение", "Каспичан", R.drawable.cl1, Offer.State.NEW, "Baby and children clothes");
+        Offer offer5 = new Offer("Yamaha YZF R1", 4000, "Мотора е в добро състояние, падано е само 2-3 пъти с него. Има леки забележки по боята", "Каспичан", R.drawable.bike, Offer.State.USED, "Bikes and ATB");
+        Offer offer6 = new Offer("Игри за PS3", 1, "В перфектно състояние Mafia 2 е колекционерско издание пишете за цени.", "Каспичан", R.drawable.ps1, Offer.State.USED, "Games");
 
-        offer1.addPhoto(R.drawable.randompic2);
-        offer1.addPhoto(R.drawable.randompic3);
-        offer1.addPhoto(R.drawable.randompic4);
-        offer1.addPhoto(R.drawable.randompic5);
-        offer1.addPhoto(R.drawable.randompic1);
+        offer1.addPhoto(R.drawable.ip2);
+        offer1.addPhoto(R.drawable.ip3);
+
+        offer2.addPhoto(R.drawable.stv2);
+
+        offer3.addPhoto(R.drawable.sh2);
+        offer3.addPhoto(R.drawable.sh3);
+
+        offer4.addPhoto(R.drawable.cl2);
+        offer4.addPhoto(R.drawable.cl3);
+        offer4.addPhoto(R.drawable.cl4);
+        offer4.addPhoto(R.drawable.cl5);
+
+        offer6.addPhoto(R.drawable.cl5);
+
+
+
 
         offers.add(offer1);
         offers.add(offer2);
@@ -49,18 +59,14 @@ public class Shop {
         offers.add(offer4);
         offers.add(offer5);
         offers.add(offer6);
-        offers.add(offer7);
-        offers.add(offer8);
 
-        UserManager.getInstance(activity).userRegister(activity, "peshko", "Pesho Kasapina", "123456", "adfasdf@fsd.fsd", "Adsfsad", "423423423",null);
+        UserManager.getInstance(activity).userRegister(activity, "peshko", "Pesho Kasapina", "123456", "pesh@ko.kasi", "Каспичан, ул. Софийска", "0878345512",null);
         offer1.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer2.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer3.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer4.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer5.setUser(UserManager.getInstance(activity).getUser("peshko"));
         offer6.setUser(UserManager.getInstance(activity).getUser("peshko"));
-        offer7.setUser(UserManager.getInstance(activity).getUser("peshko"));
-        offer8.setUser(UserManager.getInstance(activity).getUser("peshko"));
 
 
 //        String json = activity.getSharedPreferences("OLX", Context.MODE_PRIVATE).getString("offerInfo", "No added offers");
